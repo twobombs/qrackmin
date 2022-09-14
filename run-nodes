@@ -1,0 +1,10 @@
+#!/bin/bash
+echo enter amount of VCL backend nodes on this machine
+
+read nodes
+
+for i in $(seq 1 $nodes)
+
+do
+    docker run --gpus all --device=/dev/dri:/dev/dri --mount type=bind,source=/var/log/vcl,target=/var/log/vcl -d twobombs/qrackmin:vcl
+done
