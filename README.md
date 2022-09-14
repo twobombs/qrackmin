@@ -9,9 +9,14 @@ then: docker exec -ti [containerID] bash
 ThereminQ repo with runfile is checked out on root
 Created for minimalistic verification purposes
 
-### VCL Qrack@docker 
+### VCL Qrack@docker nodes
 
-create directories on host machine
+Qrackmin:vcl contains the VCL binaries to run VCL as a backend and host
+
+#### The VDI host experience is avaliable in ThereminQ:controller
+https://github.com/twobombs/thereminq#to-run-thereminq-as-a-virtualcl-controller
+
+Tip: preset directories on host machine, fill in /var/log/vcl in ./vclconfig
 
 mkdir /var/log/vcl && /var/log/vcl/etc && mkdir /var/log/vcl/etc/init.d && mkdir /var/log/vcl/usr && mkdir /var/log/vcl/usr/bin && mkdir /var/log/vcl/etc/rc0.d && mkdir /var/log/vcl/etc/rc1.d && mkdir /var/log/vcl/etc/rc2.d  &&  mkdir /var/log/vcl/etc/rc3.d && mkdir /var/log/vcl/etc/rc4.d &&  mkdir /var/log/vcl/etc/rc5.d &&  mkdir /var/log/vcl/etc/rc6.d 
 
