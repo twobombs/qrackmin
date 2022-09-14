@@ -2,5 +2,6 @@ FROM twobombs/qrackmin
 
 # add VCL
 RUN wget https://mosix.cs.huji.ac.il/vcl/VCL-1.25.tbz && tar -xjf VCL-1.25.tbz
+RUN mkdir /var/log/vcl
 
 # EXPOSE vcl ports
