@@ -1,10 +1,25 @@
 #!/bin/bash
-echo enter amount of VCL backend nodes on this machine
+# create X amount of nodes and add them to the VCL backend
+# 
 
+echo enter amount of VCL nodes on this machine
 read nodes
 
 for i in $(seq 1 $nodes)
-
 do
     docker run --gpus all --device=/dev/dri:/dev/dri --mount type=bind,source=/var/log/vcl,target=/var/log/vcl -d twobombs/qrackmin:vcl
 done
+
+echo "" > ips.txt
+
+docker ps -q > containers
+
+while read p
+do
+    docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $p >>ips.txt
+done <containers
+
+cat ips.txt > /var/log/vcl/etc/vcl/is_back_end
+cat ips.txt
+
+echo where added to the vcl backend
