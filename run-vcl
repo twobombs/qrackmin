@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cd /vcl-1.25/ && ./opencld && ./vcl start_backend
+
+tail -f /dev/null
