@@ -1,6 +1,6 @@
 #!/bin/bash
 # create X amount of nodes and add them to the VCL backend
-# 
+# first create directories as directed in the readme
 
 echo enter amount of VCL nodes on this machine
 read nodes
