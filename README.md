@@ -19,7 +19,9 @@ docker run --gpus all --device=/dev/dri:/dev/dri --mount type=bind,source=/var/l
 
 then: docker exec -ti [containerID] bash
 
-### Follow the guide for configuring VCL in a cluster here: https://mosix.cs.huji.ac.il/vcl/VCL_Guide.pdf
+### Follow the guide for configuring VCL in a cluster here
+
+https://mosix.cs.huji.ac.il/vcl/VCL_Guide.pdf
 
 All credits go to Dan Strano for creating Qrack
 
