@@ -22,7 +22,7 @@ mkdir /var/log/vcl && /var/log/vcl/etc && mkdir /var/log/vcl/etc/init.d && mkdir
 
 docker run --gpus all --device=/dev/dri:/dev/dri --mount type=bind,source=/var/log/vcl,target=/var/log/vcl -d twobombs/qrackmin:vcl
 
-then: docker exec -ti [containerID] bash
+then: docker exec -ti [containerID] bash for configuration and/or running workloads through ./vclrun
 
 ### Follow the guide for configuring VCL in a cluster here
 
