@@ -19,7 +19,7 @@ do
     docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $p >>ips.txt
 done <containers
 
-cat ips.txt > /var/log/vcl/etc/vcl/is_back_end
+cat ips.txt > /var/log/vcl/etc/vcl/nodes
 cat ips.txt
 
 echo where added to the vcl backend
