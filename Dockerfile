@@ -34,7 +34,8 @@ RUN cd /qrack128/include && mkdir CL && cd /qrack128 && mkdir _build && cd _buil
 # fetch thereminq & run/build scripts
 RUN git clone https://github.com/twobombs/thereminq.git && cd /thereminq/runscripts/ && chmod 744 * && cp run-* /root/
 
-COPY run* /root/*
+COPY run /root/run
+COPY run-vcl /root/run-vcl
 RUN chmod 744 /root/run*
 
 ENV NVIDIA_VISIBLE_DEVICES all
