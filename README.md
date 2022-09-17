@@ -13,16 +13,20 @@ Created for minimalistic verification purposes
 
 Qrackmin:vcl contains the VCL binaries to run VCL as a backend and host
 
-#### The VDI host experience is avaliable in ThereminQ:controller
-https://github.com/twobombs/thereminq#to-run-thereminq-as-a-virtualcl-controller
-
-Tip: preset directories on host machine, fill in /var/log/vcl in ./vclconfig
-
+#### On the host the following directory structure needs to be created 
 mkdir /var/log/vcl && /var/log/vcl/etc && mkdir /var/log/vcl/etc/init.d && mkdir /var/log/vcl/usr && mkdir /var/log/vcl/usr/bin && mkdir /var/log/vcl/etc/rc0.d && mkdir /var/log/vcl/etc/rc1.d && mkdir /var/log/vcl/etc/rc2.d  &&  mkdir /var/log/vcl/etc/rc3.d && mkdir /var/log/vcl/etc/rc4.d &&  mkdir /var/log/vcl/etc/rc5.d &&  mkdir /var/log/vcl/etc/rc6.d 
 
-docker run --gpus all --device=/dev/dri:/dev/dri --mount type=bind,source=/var/log/vcl,target=/var/log/vcl -d twobombs/qrackmin:vcl
+####  Run the bash script in this repository called ./run-vcl-nodes ( make it executable with chmod 744 )
+You will be asked two questions:
+- the amount of virtual nodes you want to create
+- the NVIDIA device you want to expose ( often 'all' will suffice )*
+- the nodes will be started and you'll drop into the host-containers' bash 
+- run workloads through ./vcl-1.25/vclrun
 
-then: docker exec -ti [containerID] bash for configuration and/or running workloads through ./vclrun
+(*) = other OpenCL device types such as an IntelIGP that are also recognised will taken into the cluster
+
+#### A Full VDI host experience is avaliable in ThereminQ:vcl-controller
+https://github.com/twobombs/thereminq#to-run-thereminq-as-a-virtualcl-controller
 
 ### Follow the guide for configuring VCL in a cluster here
 
