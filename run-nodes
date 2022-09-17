@@ -5,12 +5,12 @@
 echo enter amount of VCL nodes to run on this machine
 read nodes
 
-echo enter nvidia gpu mask of node devices ( enter all for all )
+echo enter nvidia device mask of node devices ( enter all for all or devicenumber to select one )
 read devices
 
 for i in $(seq 1 $nodes)
 do
-    docker run --gpus $devices --device=/dev/dri:/dev/dri --mount type=bind,source=/var/log/vcl,target=/var/log/vcl -d twobombs/qrackmin:vcl
+    docker run --gpus device=$devices --device=/dev/dri:/dev/dri --mount type=bind,source=/var/log/vcl,target=/var/log/vcl -d twobombs/qrackmin:vcl
 done
 
 echo "" > ips.txt
@@ -30,5 +30,5 @@ echo where added to the vcl backend
 # start host node
 echo starting host node, entering container with shell session for interactive session
 
-docker run --gpus $devices --device=/dev/dri:/dev/dri --mount type=bind,source=/var/log/vcl,target=/var/log/vcl -d twobombs/qrackmin:vcl > host
+docker run --gpus device=$devices --device=/dev/dri:/dev/dri --mount type=bind,source=/var/log/vcl,target=/var/log/vcl -d twobombs/qrackmin:vcl > host
 docker exec -ti $(<host) bash
