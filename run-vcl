@@ -2,4 +2,6 @@
 
 cd /vcl-1.25/ && ./vcl start_backend
 
+nvidia-smi
+
 tail -f /dev/null
