@@ -7,7 +7,7 @@ RUN mkdir /var/log/vcl && mkdir /var/log/vcl/etc && mkdir /var/log/vcl/etc/init.
 # setup & install binaries manual 
 RUN mkdir /usr/lib/vcl /etc/vcl
 RUN cd vcl-1.25 && cp vcl /etc/init.d/vcl && cp vclconf /sbin/vclconf && cp opencld /sbin/opencld && cp broker /sbin/broker && cp libOpenCL.so /usr/lib/vcl/libOpenCL.so && cp vclrun /usr/bin/vclrun && cp supercl.h /usr/include/supercl.h
-RUN touch /etc/vcl/is_back_end
+RUN touch /etc/vcl/is_back_end && touch /etc/vcl/is_host && touch /etc/vcl/may_read_files && touch /etc/vcl/may_write_files
 
 EXPOSE 255
 ENTRYPOINT /root/run-vcl
