@@ -1,0 +1,6 @@
+FROM twobombs/qrackmin:vcl
+
+RUN touch /var/log/vcl/etc/vcl/nodes
+
+EXPOSE 255
+ENTRYPOINT /root/run-vcl-controller
