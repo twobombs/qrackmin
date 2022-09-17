@@ -28,7 +28,7 @@ You will be asked two questions:
 #### A Full VDI host experience is avaliable in ThereminQ:vcl-controller
 https://github.com/twobombs/thereminq#to-run-thereminq-as-a-virtualcl-controller
 
-### Follow the guide for configuring VCL in a cluster here
+### Follow the guide for running VCL in a cluster here
 
 https://mosix.cs.huji.ac.il/vcl/VCL_Guide.pdf
 
