@@ -5,7 +5,7 @@
 echo enter amount of VCL nodes to run on this machine
 read nodes
 
-echo enter nvidia device mask of node devices ( enter all for all or devicenumber to select one )
+echo 'enter nvidia device mask of node devices ( enter all for all or devicenumber to select one )'
 read devices
 
 for i in $(seq 1 $nodes)
