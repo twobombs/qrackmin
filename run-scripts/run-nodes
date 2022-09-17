@@ -8,6 +8,8 @@ read nodes
 echo 'enter nvidia device mask of node devices ( enter all for all or devicenumber to select one )'
 read devices
 
+docker pull twobombs/qrackmin:vcl
+
 for i in $(seq 1 $nodes)
 do
     docker run --gpus device=$devices --device=/dev/dri:/dev/dri --mount type=bind,source=/var/log/vcl,target=/var/log/vcl -d twobombs/qrackmin:vcl
