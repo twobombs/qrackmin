@@ -21,7 +21,7 @@ You will be asked two questions:
 - the amount of virtual nodes you want to create
 - the NVIDIA devices you want to expose ( often 'all' will suffice, otherwise use the device number )*
 
-When you've deployed enough backend containers to you liking you can start ./run-host
+#### When you've deployed enough backend containers to you liking you can start ./run-host
 - the nodes' IPs will be scraped
 - the host will be started and will initialize
 - you'll drop into the host-containers' bash 
