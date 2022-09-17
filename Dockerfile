@@ -36,6 +36,7 @@ RUN git clone https://github.com/twobombs/thereminq.git && cd /thereminq/runscri
 
 COPY run /root/run
 COPY run-vcl /root/run-vcl
+COPY run-vcl-controller /root/run-vcl-controller
 RUN chmod 744 /root/run*
 
 ENV NVIDIA_VISIBLE_DEVICES all
