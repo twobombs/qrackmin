@@ -19,7 +19,8 @@ mkdir /var/log/vcl && /var/log/vcl/etc && mkdir /var/log/vcl/etc/init.d && mkdir
 ####  Run the bash script in this repository called ./run-vcl-nodes ( make it executable with chmod 744 )
 You will be asked two questions:
 - the amount of virtual nodes you want to create
-- the NVIDIA device you want to expose ( often 'all' will suffice )*
+- the NVIDIA devices you want to expose ( often 'all' will suffice )*
+
 - the nodes will be started and you'll drop into the host-containers' bash 
 - run workloads through ./vcl-1.25/vclrun
 
