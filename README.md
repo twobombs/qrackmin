@@ -22,8 +22,9 @@ You will be asked two questions:
 - the NVIDIA devices you want to expose ( often 'all' will suffice, otherwise use the device number )*
 
 When you've deployed enough backend containers to you liking you can start ./run-host
-- the nodes's IP will be scraped
-- the host will be started and you'll drop into the host-containers' bash 
+- the nodes' IPs will be scraped
+- the host will be started and will initialize
+- you'll drop into the host-containers' bash 
 - then run workloads through ./vcl-1.25/vclrun
 
 (*) = other OpenCL device types such as an IntelIGP that are also recognised will also be taken into the cluster
