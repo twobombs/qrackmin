@@ -1,13 +1,16 @@
 #!/bin/bash
 # create X amount of nodes and add them to the VCL backend
-# first create directories as directed in the readme
+# first create directories as directed in the readme on the host
 
-echo enter amount of VCL nodes on this machine
+echo enter amount of VCL nodes to run on this machine
 read nodes
+
+echo enter nvidia gpu mask of node devices ( enter all for all )
+read devices
 
 for i in $(seq 1 $nodes)
 do
-    docker run --gpus all --device=/dev/dri:/dev/dri --mount type=bind,source=/var/log/vcl,target=/var/log/vcl -d twobombs/qrackmin:vcl
+    docker run --gpus $devices --device=/dev/dri:/dev/dri --mount type=bind,source=/var/log/vcl,target=/var/log/vcl -d twobombs/qrackmin:vcl
 done
 
 echo "" > ips.txt
@@ -19,7 +22,13 @@ do
     docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $p >>ips.txt
 done <containers
 
+# declare nodes for host node
 cat ips.txt > /var/log/vcl/etc/vcl/nodes
 cat ips.txt
-
 echo where added to the vcl backend
+
+# start host node
+echo starting host node, entering container with shell session for interactive session
+
+docker run --gpus $devices --device=/dev/dri:/dev/dri --mount type=bind,source=/var/log/vcl,target=/var/log/vcl -d twobombs/qrackmin:vcl > host
+docker exec -ti $(<host) bash
