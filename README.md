@@ -23,9 +23,9 @@ You will be asked two questions:
 
 #### When you've deployed enough backend containers to you liking you can start ./2-run-host
 - the nodes' IPs will be scraped
-- the host will be started and will initialize
+- the host container will be started and will initialize
 - you'll drop into the host-containers' bash 
-- then run workloads through ./vcl-1.25/vclrun
+- then run workloads through ./vcl-1.25/vclrun [command]
 
 (*) = other OpenCL device types such as an IntelIGP that are also recognised will also be taken into the cluster
 
