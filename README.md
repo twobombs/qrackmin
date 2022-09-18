@@ -16,12 +16,12 @@ Qrackmin:vcl contains the VCL binaries to run VCL as a backend and host
 #### On the host the following directory structure needs to be created 
 mkdir /var/log/vcl && /var/log/vcl/etc && mkdir /var/log/vcl/etc/vcl/ && mkdir /var/log/vcl/etc/init.d && mkdir /var/log/vcl/usr && mkdir /var/log/vcl/usr/bin && mkdir /var/log/vcl/etc/rc0.d && mkdir /var/log/vcl/etc/rc1.d && mkdir /var/log/vcl/etc/rc2.d  &&  mkdir /var/log/vcl/etc/rc3.d && mkdir /var/log/vcl/etc/rc4.d &&  mkdir /var/log/vcl/etc/rc5.d &&  mkdir /var/log/vcl/etc/rc6.d 
 
-####  Run the bash script in this repository called ./run-nodes ( make it executable with chmod 744 )
+####  Run the bash in /run-scripts/ in this repository called ./1-run-nodes ( make it executable with chmod 744 )
 You will be asked two questions:
 - the amount of virtual nodes you want to create
 - the NVIDIA devices you want to expose ( often 'all' will suffice, otherwise use the device number )*
 
-#### When you've deployed enough backend containers to you liking you can start ./run-host
+#### When you've deployed enough backend containers to you liking you can start ./2-run-host
 - the nodes' IPs will be scraped
 - the host will be started and will initialize
 - you'll drop into the host-containers' bash 
