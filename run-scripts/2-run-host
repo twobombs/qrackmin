@@ -22,11 +22,11 @@ echo where added to the vcl backend IP list
 # start host node
 echo starting host node, then enter container with shell session for interactive session
 docker pull twobombs/qrackmin:vcl-controller
-docker run --gpus all --device=/dev/dri:/dev/dri --mount type=bind,source=/var/log/vcl,target=/var/log/vcl -d twobombs/qrackmin:vcl-controller > host
+docker run --mount type=bind,source=/var/log/vcl,target=/var/log/vcl -d twobombs/qrackmin:vcl-controller > host
 
 #
 # option: start VDI host
-# docker run --gpus all --device=/dev/dri:/dev/dri --mount type=bind,source=/var/log/vcl,target=/var/log/vcl -p 6080:6080 -d twobombs/thereminq:vcl-controller > host
+# docker run --mount type=bind,source=/var/log/vcl,target=/var/log/vcl -p 6080:6080 -d twobombs/thereminq:vcl-controller > host
 #
 
 docker exec -ti $(<host) bash
