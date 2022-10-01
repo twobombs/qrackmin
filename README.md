@@ -7,6 +7,7 @@ docker run --gpus all --device=/dev/dri:/dev/dri --mount type=bind,source=/var/l
 then: docker exec -ti [containerID] bash
 
 ThereminQ repo with runfile is checked out on root
+
 Created for minimalistic verification purposes
 
 - ### Qrackmin:POCL
