@@ -1,4 +1,4 @@
-FROM twobombs/qrackmin:vcl
+FROM twobombs/qrackmin:latest
 
 # install pocl  
 RUN apt update && apt install -y pocl-opencl-icd && apt clean all
