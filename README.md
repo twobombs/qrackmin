@@ -12,7 +12,7 @@ Created for minimalistic verification purposes
 
 - ### Qrackmin:POCL
 
-This container is meant to be used with high memory high CPU count VM/baremetal hosts ( 56+ cores, 512 GB RAM )
+This container is meant to be used with high memory high CPU count VM/baremetal hosts (56+ cores, 512+ GB RAM)
 
 To simulate performance and measured results on high-Qubit (34+) for validation before GPU cluster deployment
 
