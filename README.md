@@ -9,7 +9,7 @@ then: docker exec -ti [containerID] bash
 ThereminQ repo with runfile is checked out on root
 Created for minimalistic verification purposes
 
-- #### Qrackmin:POCL
+- ### Qrackmin:POCL
 
 This container is meant to be used with high memory high CPU count VM/baremetal hosts ( 56+ cores, 512 GB RAM )
 
