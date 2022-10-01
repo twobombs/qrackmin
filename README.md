@@ -15,7 +15,7 @@ This container is meant to be used with high memory high CPU count VM/baremetal 
 
 To simulate performance and measured results on high-Qubit (34+) for validation before GPU cluster deployment
 
-For this reason Pure CPU OpenCL ICD is installed so OpenCL is used for maximum alignmet with GPU OCL requirements
+For this reason Pure CPU OpenCL ICD is installed so OpenCL is used for maximum alignment with GPU OCL requirements
 
 - ### VCL Qrack@docker nodes
 
