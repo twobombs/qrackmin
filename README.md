@@ -1,6 +1,6 @@
 ## Qrackmin
 
-### Minimum Qrack@docker 
+- ### Minimum Qrack@docker 
 
 docker run --gpus all --device=/dev/dri:/dev/dri --mount type=bind,source=/var/log/qrack,target=/var/log/qrack -d twobombs/qrackmin
 
@@ -9,7 +9,15 @@ then: docker exec -ti [containerID] bash
 ThereminQ repo with runfile is checked out on root
 Created for minimalistic verification purposes
 
-### VCL Qrack@docker nodes
+- #### Qrackmin:POCL
+
+This container is meant to be used with high memory high CPU count VM/baremetal hosts ( 56+ cores, 512 GB RAM )
+
+To simulate performance and measured results on high-Qubit (34+) for validation before GPU cluster deployment
+
+For this reason Pure CPU OpenCL ICD is installed so OpenCL is used for maximum alignmet with GPU OCL requirements
+
+- ### VCL Qrack@docker nodes
 
 Qrackmin:vcl contains the VCL binaries to run VCL as a backend and host
 
