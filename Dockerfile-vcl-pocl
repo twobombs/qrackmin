@@ -4,4 +4,4 @@ FROM twobombs/qrackmin:vcl
 RUN apt update && apt install -y pocl-opencl-icd && apt clean all
 
 EXPOSE 255
-ENTRYPOINT /root/run
+ENTRYPOINT /root/run-vcl
