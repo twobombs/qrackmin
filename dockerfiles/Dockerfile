@@ -34,9 +34,10 @@ RUN cd /qrack128/include && mkdir CL && cd /qrack128 && mkdir _build && cd _buil
 # fetch thereminq & run/build scripts
 RUN git clone https://github.com/twobombs/thereminq.git && cd /thereminq/runscripts/ && chmod 744 * && cp run-* /root/
 
-COPY run /root/run
-COPY run-vcl /root/run-vcl
-COPY run-vcl-controller /root/run-vcl-controller
+COPY runfiles/run /root/run
+COPY runfiles/run-vcl /root/run-vcl
+COPY runfiles/run-vcl-controller /root/run-vcl-controller
+COPT runfiles/run-vcl-vpn /root/run-vcl-vpn
 RUN chmod 744 /root/run*
 
 ENV NVIDIA_VISIBLE_DEVICES all
