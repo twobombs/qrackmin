@@ -1,0 +1,13 @@
+
+FROM twobombs/qrackmin:vcl
+
+# install openvpn for LZ4 data compression  
+
+RUN apt update && apt install -y pocl-opencl-icd && apt clean all
+RUN apt update && apt -y install ca-certificates wget net-tools gnupg
+RUN wget -qO - https://as-repository.openvpn.net/as-repo-public.gpg | apt-key add -
+RUN echo "deb http://as-repository.openvpn.net/as/debian jammy main">/etc/apt/sources.list.d/openvpn-as-repo.list
+RUN apt update && apt -y install openvpn-as
+
+EXPOSE 9443 443 255
+ENTRYPOINT /root/run-vcl-vpn
