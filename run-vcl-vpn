@@ -1,0 +1,9 @@
+#!/bin/bash
+
+cd /vcl-1.25/ && ./vcl start_backend
+
+service openvpn-as start
+
+nvidia-smi
+
+tail -f /dev/null
