@@ -23,7 +23,7 @@ For this reason Pure CPU OpenCL ICD is installed so OpenCL is used for maximum a
 Qrackmin:vcl contains the VCL binaries to run VCL as a backend and host
 
 #### On the host the following directory structure needs to be created 
-mkdir /var/log/vcl && /var/log/vcl/etc && mkdir /var/log/vcl/etc/vcl/ && mkdir /var/log/vcl/etc/init.d && mkdir /var/log/vcl/usr && mkdir /var/log/vcl/usr/bin && mkdir /var/log/vcl/etc/rc0.d && mkdir /var/log/vcl/etc/rc1.d && mkdir /var/log/vcl/etc/rc2.d  &&  mkdir /var/log/vcl/etc/rc3.d && mkdir /var/log/vcl/etc/rc4.d &&  mkdir /var/log/vcl/etc/rc5.d &&  mkdir /var/log/vcl/etc/rc6.d 
+mkdir /var/log/vcl && mkdir /var/log/vcl/etc && mkdir /var/log/vcl/etc/vcl/ && mkdir /var/log/vcl/etc/init.d && mkdir /var/log/vcl/usr && mkdir /var/log/vcl/usr/bin && mkdir /var/log/vcl/etc/rc0.d && mkdir /var/log/vcl/etc/rc1.d && mkdir /var/log/vcl/etc/rc2.d  &&  mkdir /var/log/vcl/etc/rc3.d && mkdir /var/log/vcl/etc/rc4.d &&  mkdir /var/log/vcl/etc/rc5.d &&  mkdir /var/log/vcl/etc/rc6.d 
 
 ####  Run the bash in /run-scripts/ in this repository called ./1-run-nodes ( make it executable with chmod 744 )
 You will be asked two questions:
