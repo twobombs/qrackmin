@@ -12,11 +12,11 @@ Created for minimalistic verification purposes for ThereminQ https://github.com/
 
 - ### Qrackmin:POCL
 
-This container is meant to be used with high memory high CPU count VM/baremetal hosts (56+ cores, 512+ GB RAM)
+This container is meant to be used with high memory & CPU count hosts 
 
-To simulate performance and measured results on high-Qubit (34+) for validation before GPU cluster deployment
+Simulate performance and measured results on high-Qubit (34+) for validation before GPU cluster deployment
 
-For this reason Pure CPU OpenCL ICD is installed so OpenCL is used for maximum alignment with GPU OCL requirements
+For this reason POCL CPU OpenCL ICD is installed so OpenCL is used for maximum alignment with GPU OCL requirements
 
 - ### VCL Qrack@docker nodes
 
