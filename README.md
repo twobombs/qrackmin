@@ -8,7 +8,7 @@ then: docker exec -ti [containerID] bash
 
 ThereminQ repo with runfile is checked out on root
 
-Created for minimalistic verification purposes
+Created for minimalistic verification purposes for ThereminQ https://github.com/twobombs/thereminq
 
 - ### Qrackmin:POCL
 
