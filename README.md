@@ -2,7 +2,7 @@
 
 - ### Minimum Qrack@docker 
 
-docker run --gpus all --device=/dev/dri:/dev/dri --mount type=bind,source=/var/log/qrack,target=/var/log/qrack -d twobombs/qrackmin
+docker run --gpus all --device=/dev/dri:/dev/dri --mount type=bind,source=/var/log/qrack,target=/var/log/qrack -d twobombs/qrackmin[:tag]
 
 then: docker exec -ti [containerID] bash
 
