@@ -10,6 +10,8 @@ ThereminQ repo with runfile is checked out on root
 
 Created for minimalistic verification purposes for ThereminQ https://github.com/twobombs/thereminq
 
+Windows users should install Docker Desktop, WSL2 - Ubuntu 22.04 and CUDA with docker.io to run this on-par with Linux
+
 - ### Qrackmin:POCL
 
 This container is meant to be used with high memory & CPU count hosts 
