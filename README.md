@@ -10,7 +10,6 @@ ThereminQ repo with runfile is checked out on root
 
 Created for minimalistic verification purposes for ThereminQ https://github.com/twobombs/thereminq
 
-Windows users should install Docker Desktop, WSL2 - Ubuntu 22.04 and CUDA with docker.io to run this on-par with Linux
 
 - ### Qrackmin:POCL - latest & POCL added for CPU-only support
 
@@ -23,6 +22,8 @@ For this reason POCL CPU OpenCL ICD is installed so OpenCL is used for maximum a
 - ### Qrackmin:CUDA -  a minimum Qrack@CUDA 
 
 This container image is meant to be used with Single node or Clustered NV-link enabled GPUs 
+
+Windows users should install Docker Desktop, WSL2 - Ubuntu 22.04 and CUDA with docker.io to run this on-par with Linux
 
 - ### Qrackmin:VCL - Qrack@OCL with node support
 
