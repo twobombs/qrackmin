@@ -1,4 +1,4 @@
-## Qrackmin
+## Qrackmin - a minimalistic container image for Qrack
 
 - ### Qrackmin:latest - a minimum Qrack@OCL 
 
