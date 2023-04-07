@@ -28,11 +28,11 @@ This container image is meant to be used with Single node or Clustered NV-link e
 
 Windows users should install Docker Desktop, WSL2 - Ubuntu 22.04 and CUDA with docker.io to run this on-par with Linux
 
-- ### Qrackmin:VCL - Qrack@OCL with node support
-
 ---------------
 
-- Qrackmin:VCL contains the VCL binaries to run VCL as a backend and host
+- ### Qrackmin:VCL - Qrack@OCL with node support
+
+Qrackmin:VCL contains the VCL binaries to run VCL as a backend and host
 
 #### On the host the following directory structure needs to be created 
 mkdir /var/log/vcl && mkdir /var/log/vcl/etc && mkdir /var/log/vcl/etc/vcl/ && mkdir /var/log/vcl/etc/init.d && mkdir /var/log/vcl/usr && mkdir /var/log/vcl/usr/bin && mkdir /var/log/vcl/etc/rc0.d && mkdir /var/log/vcl/etc/rc1.d && mkdir /var/log/vcl/etc/rc2.d  &&  mkdir /var/log/vcl/etc/rc3.d && mkdir /var/log/vcl/etc/rc4.d &&  mkdir /var/log/vcl/etc/rc5.d &&  mkdir /var/log/vcl/etc/rc6.d 
