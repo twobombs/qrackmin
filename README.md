@@ -1,6 +1,6 @@
 ## Qrackmin
 
-- ### Minimum Qrack@docker 
+- ### Qrackmin:latest - a minimum Qrack@OCL 
 
 docker run --gpus all --device=/dev/dri:/dev/dri --mount type=bind,source=/var/log/qrack,target=/var/log/qrack -d twobombs/qrackmin[:tag]
 
@@ -12,7 +12,7 @@ Created for minimalistic verification purposes for ThereminQ https://github.com/
 
 Windows users should install Docker Desktop, WSL2 - Ubuntu 22.04 and CUDA with docker.io to run this on-par with Linux
 
-- ### Qrackmin:POCL
+- ### Qrackmin:POCL - latest & POCL added for CPU-only support
 
 This container images is meant to be used with high memory & CPU count hosts 
 
@@ -20,11 +20,11 @@ Simulate performance and measured results on high-Qubit (34+) for validation bef
 
 For this reason POCL CPU OpenCL ICD is installed so OpenCL is used for maximum alignment with GPU OCL requirements
 
-- ### Qrackmin:CUDA
+- ### Qrackmin:CUDA -  a minimum Qrack@CUDA 
 
 This container image is meant to be used with Single node or Clustered NV-link enabled GPUs 
 
-- ### VCL Qrack@docker nodes
+- ### Qrackmin:VCL - Qrack@OCL with node support
 
 Qrackmin:VCL contains the VCL binaries to run VCL as a backend and host
 
