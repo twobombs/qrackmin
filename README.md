@@ -50,6 +50,8 @@ You will be asked two questions:
 
 (*) = other OpenCL device types such as an IntelIGP that are also recognised will also be taken into the cluster
 
+---------------
+
 #### A Full VDI host experience is avaliable in ThereminQ:vcl-controller
 https://github.com/twobombs/thereminq#to-run-thereminq-as-a-virtualcl-controller
 
