@@ -20,6 +20,8 @@ Simulate performance and measured results on high-Qubit (34+) for validation bef
 
 For this reason POCL CPU OpenCL ICD is installed so OpenCL is used for maximum alignment with GPU OCL requirements
 
+---------------
+
 - ### Qrackmin:CUDA -  a minimum Qrack@CUDA 
 
 This container image is meant to be used with Single node or Clustered NV-link enabled GPUs 
@@ -27,6 +29,8 @@ This container image is meant to be used with Single node or Clustered NV-link e
 Windows users should install Docker Desktop, WSL2 - Ubuntu 22.04 and CUDA with docker.io to run this on-par with Linux
 
 - ### Qrackmin:VCL - Qrack@OCL with node support
+
+---------------
 
 Qrackmin:VCL contains the VCL binaries to run VCL as a backend and host
 
@@ -56,6 +60,8 @@ https://mosix.cs.huji.ac.il/vcl/VCL_Guide.pdf
 Docker Swarm https://docs.docker.com/engine/swarm/swarm-tutorial/create-swarm/
 
 Zerotier https://www.zerotier.com/
+
+---------------
 
 ### Credits go to Dan Strano for creating Qrack
 https://github.com/unitaryfund/qrack
