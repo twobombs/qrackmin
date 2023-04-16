@@ -24,7 +24,7 @@ For this reason POCL CPU OpenCL ICD is installed so OpenCL is used for maximum a
 
 - ### Qrackmin:CUDA -  a minimum Qrack@CUDA 
 
-This container image is meant to be used with Single node or Clustered NV-link enabled GPUs 
+This container image is meant to be used with Single node or Clustered NV-link enabled GPUs; use --privileged in docker
 
 Windows users should install Docker Desktop, WSL2 - Ubuntu 22.04 and CUDA with docker.io to run this on-par with Linux
 
