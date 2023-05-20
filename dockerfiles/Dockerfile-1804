@@ -26,22 +26,6 @@ RUN cp -r /qrack /qrack64
 RUN cp -r /qrack /qrack16
 RUN cp -r /qrack /qrack8
 
-RUN cp -r /qrack /qrack128cuda
-RUN cp -r /qrack /qrackcuda
-RUN cp -r /qrack /qrack128cuda
-RUN cp -r /qrack /qrack64cuda
-RUN cp -r /qrack /qrack16cuda
-RUN cp -r /qrack /qrack8cuda
-
-# CUDA Qrack install & dependancies 
-RUN cd /qrackcuda/include && mkdir CL && cd /var/log && mkdir qrack && cd /qrackcuda && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=5 -DUINTPOW=6 -DQBCAPPOW=6 -DENABLE_COMPLEX_X2=ON -DENABLE_OCL_MEM_GUARDS=ON -DENABLE_CUDA=ON -DENABLE_OPENCL=OFF -DQRACK_CUDA_ARCHITECTURES=50 .. && make -i -k -j 2 all && make install
-# 64Qrack install & dependancies
-RUN cd /qrack64cuda/include && mkdir CL && cd /qrack64cuda && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=6 -DUINTPOW=6 -DQBCAPPOW=7 -DENABLE_COMPLEX_X2=ON -DENABLE_OCL_MEM_GUARDS=ON -DENABLE_CUDA=ON -DENABLE_OPENCL=OFF -DQRACK_CUDA_ARCHITECTURES=50 .. && make -i -k -j 2 all && make install
-# SmallQrack install & dependancies
-# RUN cd /qrack16cuda/include && mkdir CL && cd /qrack16cuda && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=4 -DUINTPOW=5 -DQBCAPPOW=5 -DENABLE_COMPLEX_X2=OFF -DENABLE_OCL_MEM_GUARDS=ON -DENABLE_CUDA=ON -DENABLE_OPENCL=OFF -DQRACK_CUDA_ARCHITECTURES=50 .. && make -i -k -j 2 all && make install
-# BigQrack install & dependancies
-RUN cd /qrack128cuda/include && mkdir CL && cd /qrack128cuda && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=6 -DUINTPOW=6 -DQBCAPPOW=12 -DENABLE_RDRAND=OFF -DENABLE_COMPLEX_X2=ON -DENABLE_OCL_MEM_GUARDS=ON -DENABLE_CUDA=ON -DENABLE_OPENCL=OFF -DQRACK_CUDA_ARCHITECTURES=50 .. && make -i -k -j 2 all && make install
-
 # install features
 RUN apt-get update && apt-get -y install build-essential cmake openssh-server wget vim-common opencl-headers curl libfreetype6-dev autotools-dev libicu-dev libbz2-dev libboost-all-dev && apt-get clean all
 # Qrack install & dependancies 
