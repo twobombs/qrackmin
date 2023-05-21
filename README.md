@@ -1,38 +1,28 @@
-## Qrackmin - a minimalistic container image for Qrack
+## Qrackmin - a minimalistic container image for Qrack - with OpenCL and CUDA binaries
 
-- ### Qrackmin:latest - a minimum Qrack@OCL 
+:latest container image is meant to be used on a single node with Nvidia-Docker2 and Linux support
 
-docker run --gpus all --device=/dev/dri:/dev/dri --mount type=bind,source=/var/log/qrack,target=/var/log/qrack -d twobombs/qrackmin[:tag]
+- Windows users should install WSL2, Docker Desktop, Ubuntu 22.04, docker.io, nvidia-docker2 to run this ( CUDA only )
 
-then: docker exec -ti [containerID] bash
+docker run --gpus all --device=/dev/dri:/dev/dri [--privileged] -d twobombs/qrackmin[:tag]
 
-ThereminQ repo with runfile is checked out on root
+- use: --mount type=bind,source=/var/log/qrack,target=/var/log/qrack for saving of measured results outside container
 
-Created for minimalistic verification purposes for ThereminQ https://github.com/twobombs/thereminq
+then: docker exec -ti [containerID] bash - ThereminQ repo with runfile is checked out on root
 
 ---------------
 
 - ### Qrackmin:POCL - latest & POCL added for CPU-only support
 
-This container images is meant to be used with high memory & CPU count hosts 
+:pocl container image adds the generic OpenCL-ICD and is to be used with high memory & CPU count hosts 
 
-Simulate performance and measured results on high-Qubit (34+) for validation before GPU cluster deployment
-
-For this reason POCL CPU OpenCL ICD is installed so OpenCL is used for maximum alignment with GPU OCL requirements
-
----------------
-
-- ### Qrackmin:CUDA -  a minimum Qrack@CUDA 
-
-This container image is meant to be used with Single node or Clustered NV-link enabled GPUs; use --privileged in docker
-
-Windows users should install Docker Desktop, WSL2 - Ubuntu 22.04 and CUDA with docker.io to run this on-par with Linux
+Simulate performance and measured results on CPU for high-Qubit (34+) for validation or before GPU cluster deployment
 
 ---------------
 
 - ### Qrackmin:VCL - Qrack@OCL with node support
 
-Qrackmin:VCL contains the VCL binaries to run VCL as a backend and host
+:vcl contains the VCL binaries to run VCL as a backend and host
 
 #### On the host the following directory structure needs to be created 
 sudo mkdir /var/log/vcl /var/log/vcl/etc /var/log/vcl/etc/vcl/ /var/log/vcl/etc/init.d /var/log/vcl/usr /var/log/vcl/usr/bin /var/log/vcl/etc/rc0.d /var/log/vcl/etc/rc1.d /var/log/vcl/etc/rc2.d /var/log/vcl/etc/rc3.d /var/log/vcl/etc/rc4.d /var/log/vcl/etc/rc5.d /var/log/vcl/etc/rc6.d 
