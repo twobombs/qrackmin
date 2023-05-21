@@ -28,7 +28,7 @@ then: docker exec -ti [containerID] bash - ThereminQ repo with runfile is checke
 #### On the host the following directory structure needs to be created 
 sudo mkdir /var/log/vcl /var/log/vcl/etc /var/log/vcl/etc/vcl/ /var/log/vcl/etc/init.d /var/log/vcl/usr /var/log/vcl/usr/bin /var/log/vcl/etc/rc0.d /var/log/vcl/etc/rc1.d /var/log/vcl/etc/rc2.d /var/log/vcl/etc/rc3.d /var/log/vcl/etc/rc4.d /var/log/vcl/etc/rc5.d /var/log/vcl/etc/rc6.d 
 
-####  Run the bash in /run-scripts/ in this repository called ./1-run-nodes ( make it executable with chmod 744 )
+####  Run the bash in /run-scripts/ in this repository called ./1-run-nodes
 You will be asked two questions:
 - the amount of virtual nodes you want to create
 - the NVIDIA devices you want to expose ( often 'all' will suffice, otherwise use the device number )*
