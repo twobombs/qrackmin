@@ -16,7 +16,8 @@ then: docker exec -ti [containerID] bash - ThereminQ repo with runfile is checke
 
 :pocl container image adds the generic OpenCL-ICD and is to be used with high memory & CPU count hosts 
 
-Simulate performance and measured results on CPU for high-Qubit (34+) for validation or before GPU cluster deployment
+- Simulate performance and measured results on CPU
+- For validation before GPU cluster deployment
 
 ---------------
 
