@@ -4,7 +4,7 @@
 
 - Windows users should install WSL2, Docker Desktop, Ubuntu 22.04, docker.io, nvidia-docker2 to run this ( CUDA only )
 
-docker run --gpus all --device=/dev/dri:/dev/dri [--privileged] -d twobombs/qrackmin[:tag]
+docker run --gpus all --device=/dev/dri:/dev/dri --privileged -d twobombs/qrackmin[:tag]
 
 - --mount type=bind,source=/var/log/qrack,target=/var/log/qrack for saving of measured results outside container
 
