@@ -17,7 +17,7 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && apt install -y cm
 # NVidia hw integration
 RUN mkdir -p /etc/OpenCL/vendors && echo "libnvidia-opencl.so.1" > /etc/OpenCL/vendors/nvidia.icd
 
-# clone repos
+# clone repos - patch for lowest version sm50
 RUN git clone --recursive https://github.com/unitaryfund/qrack.git
 RUN sed -i 's/native/50/g' /qrack/cmake/CUDA.cmake
 
