@@ -8,7 +8,7 @@ ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64:${LD_LIBRARY_P
 RUN apt update && apt -y upgrade && apt clean all
 
 # fetch cuquantum
-RUN apt install -y cuquantum cuquantum-dev && apt clean all
+RUN apt install -y git cuquantum cuquantum-dev && apt clean all
 RUN git clone https://github.com/NVIDIA/cuQuantum.git
 
 # install glvnd ( temp key fix )
