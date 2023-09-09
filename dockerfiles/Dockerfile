@@ -7,6 +7,10 @@ ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64:${LD_LIBRARY_P
 # upgrade image because of nv not upgrading
 RUN apt update && apt -y upgrade && apt clean all
 
+# fetch cuquantum
+RUN apt install cuquantum cuquantum-dev && apt clean all
+RUN git clone https://github.com/NVIDIA/cuQuantum.git
+
 # install glvnd ( temp key fix )
 RUN apt-get clean && \
     apt-key adv --fetch-keys "https://developer.download.nvidia.com/compute/cuda/repos/$(cat /etc/os-release | grep '^ID=' | awk -F'=' '{print $2}')$(cat /etc/os-release | grep '^VERSION_ID=' | awk -F'=' '{print $2}' | sed 's/[^0-9]*//g')/x86_64/3bf863cc.pub" && \
