@@ -2,13 +2,13 @@
 
 :latest container image is meant to be used on a single node with Nvidia-Docker2 and Linux support
 
-- Windows users should install WSL2, Docker Desktop, Ubuntu 22.04, docker.io, nvidia-docker2 to run this ( CUDA only )
-
 docker run --gpus all --device=/dev/dri:/dev/dri --privileged -d twobombs/qrackmin[:tag]
 
 - -v /var/log/qrack:/var/log/qrack for saving of measured results outside container
 
 then: docker exec -ti [containerID] bash - ThereminQ repo with runfile is checked out on /root
+
+- Windows users should install WSL2, Docker Desktop, Ubuntu 22.04, docker.io, nvidia-docker2 to run this ( CUDA only )
 
 ---------------
 
