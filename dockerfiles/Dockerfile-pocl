@@ -5,6 +5,8 @@ RUN apt update && add-apt-repository -y ppa:ocl-icd/ppa && apt install -y pocl-o
 RUN apt install -y python3-dev libpython3-dev build-essential ocl-icd-libopencl1 cmake git pkg-config libclang-dev clang llvm make ninja-build ocl-icd-libopencl1 ocl-icd-dev ocl-icd-opencl-dev libhwloc-dev zlib1g zlib1g-dev clinfo dialog apt-utils libxml2-dev libclang-cpp-dev llvm-dev && apt clean all
 RUN wget https://github.com/pocl/pocl/archive/refs/tags/v4.0.tar.gz && tar -xvzf v4.0.tar.gz
 RUN cd pocl-4.0 && mkdir build && cd build && cmake .. && make && make install
+RUN echo "libpocl.so.2.11.0" > /etc/OpenCL/vendors/pocl.icd
+RUN cp /pocl-4.0/build/lib/CL/libpocl.so.2.11.0 /usr/lib/x86_64-linux-gnu/libpocl.so.2.11.0
 
 EXPOSE 255
 ENTRYPOINT /root/run
