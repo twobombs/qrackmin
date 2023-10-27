@@ -6,7 +6,7 @@
 docker run --gpus all --device=/dev/dri:/dev/dri --privileged -d twobombs/qrackmin[:tag]
 ````
 
-- -v `/var/log/qrack:/var/log/qrack' for saving of measured results outside container
+- `-v /var/log/qrack:/var/log/qrack` for saving of measured results outside container
 
 then: ```bash docker exec -ti [containerID] bash ```` - ThereminQ repo with runfiles is checked out on `/root`
 
