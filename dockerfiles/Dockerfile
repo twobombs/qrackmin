@@ -9,7 +9,7 @@ RUN apt update && apt -y upgrade && apt clean all
 
 # fetch cuquantum
 RUN apt install -y git cuquantum cuquantum-dev libcutensor1 libcutensor-dev libcutensor-doc && apt clean all
-RUN git clone https://github.com/NVIDIA/cuQuantum.git
+RUN git clone --depth=1 https://github.com/NVIDIA/cuQuantum.git
 
 # install glvnd ( temp key fix )
 RUN apt-get clean && \
@@ -21,7 +21,7 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && apt install -y so
 RUN mkdir -p /etc/OpenCL/vendors && echo "libnvidia-opencl.so.1" > /etc/OpenCL/vendors/nvidia.icd
 
 # clone repos
-RUN git clone --recursive https://github.com/unitaryfund/qrack.git
+RUN git clone --depth=1 --recursive https://github.com/unitaryfund/qrack.git
 RUN cp -r /qrack /qrack128
 RUN cp -r /qrack /qrack64
 RUN cp -r /qrack /qrack16
@@ -56,7 +56,7 @@ RUN cd /qrack16/include && mkdir CL && cd /qrack16 && mkdir _build && cd _build 
 RUN cd /qrack128/include && mkdir CL && cd /qrack128 && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=6 -DUINTPOW=6 -DQBCAPPOW=12 -DENABLE_RDRAND=OFF -DENABLE_COMPLEX_X2=ON .. && make -i -k -j 2 all && make install
 
 # fetch thereminq & run/build scripts
-RUN git clone https://github.com/twobombs/thereminq.git && cd /thereminq/runscripts/ && chmod 744 * && cp run-* /root/
+RUN git clone --depth=1 https://github.com/twobombs/thereminq.git && cd /thereminq/runscripts/ && chmod 744 * && cp run-* /root/
 
 COPY run-scripts/run /root/run
 COPY run-scripts/run-vcl /root/run-vcl
