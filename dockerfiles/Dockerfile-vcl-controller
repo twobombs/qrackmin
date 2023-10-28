@@ -1,7 +1,7 @@
 FROM twobombs/qrackmin:vcl
 
 # fetch precompiled test apps 
-RUN git clone https://github.com/twobombs/cudacluster.git
+RUN git clone --depth=1 https://github.com/twobombs/cudacluster.git
 
 # preset nodes file
 RUN touch /var/log/vcl/etc/vcl/nodes
