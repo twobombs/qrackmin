@@ -18,7 +18,7 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && apt install -y so
 RUN mkdir -p /etc/OpenCL/vendors && echo "libnvidia-opencl.so.1" > /etc/OpenCL/vendors/nvidia.icd
 
 # clone repos - patch cmake for CUDA noGPU build
-RUN git clone --recursive https://github.com/unitaryfund/qrack.git
+RUN git clone --depth=1 --recursive https://github.com/unitaryfund/qrack.git
 RUN sed -i 's/native/50/g' /qrack/cmake/CUDA.cmake
 
 RUN cp -r /qrack /qrack128
