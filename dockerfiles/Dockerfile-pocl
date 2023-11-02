@@ -1,12 +1,17 @@
 FROM twobombs/qrackmin:latest
 
-# install pocl  
+# install pocl 3 and pocl 4 and 5 build requirements
 RUN apt update && add-apt-repository -y ppa:ocl-icd/ppa && apt install -y pocl-opencl-icd llvm && apt clean all
 RUN apt install -y python3-dev libpython3-dev build-essential ocl-icd-libopencl1 cmake git pkg-config libclang-dev clang llvm make ninja-build ocl-icd-libopencl1 ocl-icd-dev ocl-icd-opencl-dev libhwloc-dev zlib1g zlib1g-dev clinfo dialog apt-utils libxml2-dev libclang-cpp-dev llvm-dev && apt clean all
+
+# pocl 4
 RUN wget https://github.com/pocl/pocl/archive/refs/tags/v4.0.tar.gz && tar -xvzf v4.0.tar.gz
-RUN cd pocl-4.0 && mkdir build && cd build && cmake .. && make && make install
+RUN cd pocl-4.0 && mkdir build && cd build && cmake .. && make all && make install
 RUN echo "libpocl.so.2.11.0" > /etc/OpenCL/vendors/pocl4.icd
 RUN cp /pocl-4.0/build/lib/CL/libpocl.so.2.11.0 /usr/lib/x86_64-linux-gnu/libpocl.so.2.11.0
+
+# pre-pocl 5
+RUN git clone https://github.com/pocl/pocl.git && cd pocl && mkdir build && cd build && cmake.. && make all
 
 EXPOSE 255
 ENTRYPOINT /root/run
