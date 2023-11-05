@@ -1,7 +1,7 @@
 FROM twobombs/qrackmin:latest
 
 # install pocl 3 and pocl 4 and 5 build requirements
-RUN apt update && add-apt-repository -y ppa:ocl-icd/ppa && apt install -y clang llvm pocl-opencl-icd ocl-icd-opencl-dev libopencl-clang-dev libclang-dev libclang-cpp-dev pkg-config libhwloc-dev python3-dev ocl-icd-libopencl1 ocl-icd-opencl-dev llvm-spirv14 cmake && apt clean all
+RUN apt update && add-apt-repository -y ppa:ocl-icd/ppa && apt install -y clang llvm pocl-opencl-icd ocl-icd-opencl-dev libopencl-clang-dev libclang-dev libclang-cpp-dev pkg-config libhwloc-dev python3-dev ocl-icd-libopencl1 ocl-icd-opencl-dev llvm-spirv-15 cmake && apt clean all
 RUN apt install -y python3-dev libpython3-dev build-essential ocl-icd-libopencl1 cmake git pkg-config libclang-dev clang llvm make ninja-build ocl-icd-libopencl1 ocl-icd-dev ocl-icd-opencl-dev libhwloc-dev zlib1g zlib1g-dev clinfo dialog apt-utils libxml2-dev libclang-cpp-dev llvm-dev && apt clean all
 
 # pocl 4
