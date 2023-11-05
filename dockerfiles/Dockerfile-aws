@@ -9,8 +9,9 @@ RUN wget https://github.com/unitaryfund/qrack/releases/download/vm6502q.v8.20.1/
 # fetch & install aws tools
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" &&  unzip awscliv2.zip  && ./aws/install && ./usr/local/bin/aws --version
 
-# run qrack benchmarks test
-RUN mkdir /var/log/qrack && ./qrack_Ubuntu_22.04_LTS_benchmarks --optimal-cpu --measure-shots=1024 -m=-1 --samples=10 --measure-output=/var/log/qrack/"measured_qft_$(date +%F_%R_%S).log" test_qft_permutation_round_trip_entangled
+# setup qrack benchmarks test
+COPY run-scripts/run-aws /run-aws
+RUN chmod 744 run-aws && mkdir /var/log/qrack
 
 # set defailt entrypoint 
-ENTRYPOINT ./qrack_Ubuntu_22.04_LTS_benchmarks
+ENTRYPOINT /run-aws
