@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 
 # fetch dependancies
-RUN apt update && apt install -y wget unzip curl ocl-icd-opencl-dev ocl-icd-opencl && apt clean all
+RUN apt update && apt install -y wget unzip curl ocl-icd-opencl-dev && apt clean all
 
 # fetch precompiled qrack benchmarks app
 RUN wget https://github.com/unitaryfund/qrack/releases/download/vm6502q.v8.20.1/qrack_Ubuntu_22.04_LTS_benchmarks && chmod 744 qrack_Ubuntu_22.04_LTS_benchmarks
