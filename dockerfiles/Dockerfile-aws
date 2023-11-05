@@ -12,7 +12,7 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
 # setup qrack benchmarks test
 COPY run-scripts/run-aws /run-aws
 RUN chmod 744 run-aws && mkdir /var/log/qrack
-RUN ./qrack_Ubuntu_22.04_LTS_benchmarks --proc-cpu --measure-shots=1024 -m=-1 --samples=10 --measure-output=/var/log/qrack/"measured_qft_$(date +%F_%R_%S).log" test_qft_permutation_round_trip_entangled
+RUN ./qrack_Ubuntu_22.04_LTS_benchmarks --optimal-cpu --measure-shots=1024 -m=-1 --samples=10 --measure-output=/var/log/qrack/"measured_qft_$(date +%F_%R_%S).log" test_qft_permutation_round_trip_entangled
 
 # set defailt entrypoint 
 ENTRYPOINT /run-aws
