@@ -27,7 +27,7 @@ docker exec -ti [containerID] bash
 
 ---------------
 
-- ### Qrackmin`:VCL` - Qrack@OCL with node support
+- ### Qrackmin`:VCL` - Qrack@VCL with node support
 
 `:vcl` contains the VCL binaries to run VCL as a backend and host
 
