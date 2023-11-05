@@ -1,0 +1,3 @@
+#!/bin/bash
+
+./qrack_Ubuntu_22.04_LTS_benchmarks --optimal-cpu --measure-shots=1024 -m=-1 --samples=10 --measure-output=/var/log/qrack/"measured_qft_$(date +%F_%R_%S).log" test_qft_permutation_round_trip_entangled
