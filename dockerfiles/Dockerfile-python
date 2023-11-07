@@ -12,5 +12,5 @@ RUN git clone --depth=1 https://github.com/vm6502q/pyqrack-jupyter.git
 RUN cd pyqrack-jupyter && jupyter nbconvert --to script *.ipynb
 
 # set defailt entrypoint 
-COPY /runfiles/run-python /run-python
+COPY run-scripts/run-python /run-python
 ENTRYPOINT /run-python
