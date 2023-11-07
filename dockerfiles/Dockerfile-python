@@ -1,0 +1,16 @@
+FROM ubuntu:latest
+
+# install python+pip
+RUN apt install -y python3-pip
+RUN pip3 install --upgrade pip
+
+# install pyqrack and jupiter tools
+RUN pip3 install pyqrack jupyter jupytext
+
+#fetch pycrack jupyter repo and convert to python 
+RUN git clone --depth=1 https://github.com/vm6502q/pyqrack-jupyter.git 
+RUN cd pyqrack-jupyter && jupyter nbconvert --to script *.ipynb
+
+# set defailt entrypoint 
+COPY /runfiles/run-python /run-python
+ENTRYPOINT /run-python
