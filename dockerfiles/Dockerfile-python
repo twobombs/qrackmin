@@ -13,4 +13,5 @@ RUN cd pyqrack-jupyter && jupyter nbconvert --to script *.ipynb
 
 # set defailt entrypoint 
 COPY run-scripts/run-python /run-python
+RUN chmod 744 run-python
 ENTRYPOINT /run-python
