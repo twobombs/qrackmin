@@ -1,0 +1,8 @@
+#!/bin/bash
+
+cd pyqrack-jupyter
+
+python RCS_nearest-neighbor_benchmark.py
+
+# end run, do not stop container
+tail -f /dev/null
