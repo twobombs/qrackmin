@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 
-# install git,python+pip
-RUN apt update && apt install -y git python3-pip && apt clean all
+# install git,python+pip and opencl pocl cpu stub
+RUN apt update && apt install -y git python3-pip pocl-opencl-icd && apt clean all
 RUN pip3 install --upgrade pip
 
 # install pyqrack and jupiter tools
