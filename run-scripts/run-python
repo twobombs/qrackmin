@@ -2,7 +2,7 @@
 
 cd pyqrack-jupyter
 
-python3 RCS_nearest-neighbor_benchmark.py
+ipython RCS_nearest-neighbor_benchmark.py
 
 # end run, do not stop container
 tail -f /dev/null
