@@ -1,0 +1,16 @@
+FROM ubuntu:latest
+
+# install features
+RUN apt-get update && apt-get -y install build-essential cmake openssh-server wget vim-common opencl-headers curl libfreetype6-dev autotools-dev libicu-dev libbz2-dev libboost-all-dev && apt-get clean all
+
+# clone repos
+RUN git clone --depth=1 --recursive https://github.com/unitaryfund/qrack.git
+RUN git clone --depth=1 --recursive https://github.com/unitaryfund/pyqrack.git
+
+# Qrack install & dependancies without OpenCL for CPU only processing
+RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=5 -DUINTPOW=6 -DQBCAPPOW=6 -DENABLE_COMPLEX_X2=ON -DENABLE_OPENCL=OFF .. && make -i -k -j 2 all && make install
+
+# install PyQrack
+RUN cd /pyqrack && python3 setup.py && mkdir /usr/local/lib/python3.10/dist-packages/pyqrack && cp -r pyqrack/* /usr/local/lib/python3.10/dist-packages/pyqrack
+
+ENTRYPOINT /qrack/_build/benchmarks --optimal-cpu
