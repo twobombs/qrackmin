@@ -4,10 +4,20 @@ FROM ubuntu:latest
 RUN apt update && apt install -y git python3-pip pocl-opencl-icd && apt clean all
 RUN pip3 install --upgrade pip
 
-# install pyqrack and jupiter tools
-RUN pip3 install pyqrack jupyter jupytext
+# install features
+RUN apt-get update && apt-get -y install git build-essential cmake openssh-server wget vim-common python3-setuptools opencl-headers curl libfreetype6-dev autotools-dev libicu-dev libbz2-dev libboost-all-dev && apt-get clean all
 
-#fetch pycrack jupyter repo and convert to python 
+# clone repos
+RUN git clone --depth=1 --recursive https://github.com/unitaryfund/qrack.git
+RUN git clone --depth=1 --recursive https://github.com/unitaryfund/pyqrack.git
+
+# Qrack install & dependancies without OpenCL for CPU only processing
+RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=5 -DUINTPOW=6 -DQBCAPPOW=6 -DENABLE_COMPLEX_X2=ON -DENABLE_OPENCL=OFF .. && make -i -k -j 2 all && make install
+
+# install PyQrack
+RUN cd /pyqrack && ./package.sh && mkdir /usr/local/lib/python3.10/dist-packages/pyqrack && cp -r pyqrack/* /usr/local/lib/python3.10/dist-packages/pyqrack
+
+# fetch pycrack jupyter repo and convert to python 
 RUN git clone --depth=1 https://github.com/vm6502q/pyqrack-jupyter.git 
 RUN cd pyqrack-jupyter && jupyter nbconvert --to script *.ipynb
 
