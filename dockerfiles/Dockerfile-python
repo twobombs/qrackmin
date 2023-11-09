@@ -15,7 +15,7 @@ RUN git clone --depth=1 --recursive https://github.com/unitaryfund/pyqrack.git
 RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=5 -DUINTPOW=6 -DQBCAPPOW=6 -DENABLE_COMPLEX_X2=ON -DENABLE_OPENCL=OFF .. && make -i -k -j 2 all && make install
 
 # install PyQrack
-RUN cd /pyqrack && ./package.sh && mkdir /usr/local/lib/python3.10/dist-packages/pyqrack && cp -r pyqrack/* /usr/local/lib/python3.10/dist-packages/pyqrack
+RUN cd /pyqrack &&  pip3 install .
 
 # fetch pycrack jupyter repo and convert to python 
 RUN pip3 install jupyter jupytext 
