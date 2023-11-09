@@ -1,6 +1,6 @@
 ## Qrackmin - a minimalistic container image for Qrack - OpenCL & CUDA
 
-`:latest` container image is meant to be used on a single node with Nvidia-Docker2 and Linux support
+[`:latest`](https://github.com/twobombs/qrackmin/blob/main/dockerfiles/Dockerfile) container image is meant to be used on a single node with Nvidia-Docker2 and Linux support
 
 ```bash
 docker run --gpus all --device=/dev/dri:/dev/dri --privileged -d twobombs/qrackmin[:tag]
@@ -21,15 +21,15 @@ docker exec -ti [containerID] bash
 - ### `Qrackmin:AWS` - `Qrackmin:PYTHON` - `Qrackmin:QISKIT`
   on demand AWS template proposals ( in active development )
 
-- `:AWS` boilerplate code for Qrack as a Service ( benchmarks output )
+- [`:AWS`](https://github.com/twobombs/qrackmin/blob/main/dockerfiles/Dockerfile-aws) boilerplate code for Qrack as a Service ( benchmarks output )
 
 ![image](https://github.com/twobombs/qrackmin/assets/12692227/02f74309-bb42-43fd-b0bd-8197cce9835e)
 
-- `:PYTHON` boilerplate code for PyQrack as a notebook container runtime
+- [`:PYTHON`](https://github.com/twobombs/qrackmin/blob/main/dockerfiles/Dockerfile-python) boilerplate code for PyQrack as a notebook container runtime
 
 ![imagepython](https://github.com/twobombs/qrackmin/assets/12692227/008a8a06-7980-47e6-b75e-a09685f879c0)
 
-- `:QISKIT` boilerplate code to run Qiskit notebooks and Python container runtime
+- [`:QISKIT`](https://github.com/twobombs/qrackmin/blob/main/dockerfiles/Dockerfile-qiskit) boilerplate code to run Qiskit notebooks and Python container runtime
 
 The AWS template proposal container images run on Qrack's native C++ simulation
 
@@ -37,7 +37,7 @@ The AWS template proposal container images run on Qrack's native C++ simulation
 
 - ### `Qrackmin:POCL` - latest & POCL added for CPU-only support
 
-`:pocl` container image adds the generic OpenCL-ICD and is to be used with high memory & CPU count hosts 
+[`:pocl`](https://github.com/twobombs/qrackmin/blob/main/dockerfiles/Dockerfile-pocl) container image adds the generic OpenCL-ICD and is to be used with high memory & CPU count hosts 
 
 - Simulate performance and measured results on CPU
 - For validation before GPU cluster deployment
@@ -46,7 +46,7 @@ The AWS template proposal container images run on Qrack's native C++ simulation
 
 - ### Qrackmin`:VCL` - Qrack@VCL with node support
 
-`:vcl` contains the VCL binaries to run VCL as a backend and host
+[`:vcl`](https://github.com/twobombs/qrackmin/blob/main/dockerfiles/Dockerfile-vcl) contains the VCL binaries to run VCL as a backend and host
 
 #### On the host the following directory structure needs to be created 
 `sudo mkdir /var/log/vcl /var/log/vcl/etc /var/log/vcl/etc/vcl/ /var/log/vcl/etc/init.d /var/log/vcl/usr /var/log/vcl/usr/bin /var/log/vcl/etc/rc0.d /var/log/vcl/etc/rc1.d /var/log/vcl/etc/rc2.d /var/log/vcl/etc/rc3.d /var/log/vcl/etc/rc4.d /var/log/vcl/etc/rc5.d /var/log/vcl/etc/rc6.d`
