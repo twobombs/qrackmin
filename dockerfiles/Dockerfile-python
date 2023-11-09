@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 
 # install git,jupyter,python+pip and opencl pocl cpu stub
-RUN apt update && apt install -y git python3-pip pocl-opencl-icd jupyter jupytext && apt clean all
+RUN apt update && apt install -y git python3-pip pocl-opencl-icd && apt clean all
 RUN pip3 install --upgrade pip
 
 # install build features
@@ -18,6 +18,7 @@ RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && c
 RUN cd /pyqrack && ./package.sh && mkdir /usr/local/lib/python3.10/dist-packages/pyqrack && cp -r pyqrack/* /usr/local/lib/python3.10/dist-packages/pyqrack
 
 # fetch pycrack jupyter repo and convert to python 
+RUN pip3 install jupyter jupytext 
 RUN git clone --depth=1 https://github.com/vm6502q/pyqrack-jupyter.git 
 RUN cd pyqrack-jupyter && jupyter nbconvert --to script *.ipynb
 
