@@ -17,11 +17,18 @@ docker exec -ti [containerID] bash
 - Windows users should install `WSL2, Docker Desktop, docker.io, nvidia-docker2` to run this ( `CUDA` only )
 
 ---------------
+
 - ### `Qrackmin:AWS` - `Qrackmin:PYTHON` - `Qrackmin:QISKIT`
   on demand AWS template proposals ( in active development )
 
 - `:AWS` boilerplate code for Qrack as a Service ( benchmarks output )
+
+![image](https://github.com/twobombs/qrackmin/assets/12692227/02f74309-bb42-43fd-b0bd-8197cce9835e)
+
 - `:PYTHON` boilerplate code for PyQrack as a notebook container runtime
+
+![imagepython](https://github.com/twobombs/qrackmin/assets/12692227/008a8a06-7980-47e6-b75e-a09685f879c0)
+
 - `:QISKIT` boilerplate code to run Qiskit notebooks and Python container runtime
 
 The AWS template proposal container images run on Qrack's native C++ simulation
