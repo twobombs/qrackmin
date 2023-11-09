@@ -29,7 +29,7 @@ docker exec -ti [containerID] bash
 
 ![imagepython](https://github.com/twobombs/qrackmin/assets/12692227/008a8a06-7980-47e6-b75e-a09685f879c0)
 
-- [`:QISKIT`](https://github.com/twobombs/qrackmin/blob/main/dockerfiles/Dockerfile-qiskit) boilerplate code to run Qiskit notebooks and Python container runtime
+- [`:QISKIT`](https://github.com/twobombs/qrackmin/blob/main/dockerfiles/Dockerfile-qiskit) boilerplate code to run Qiskit notebooks and Python container runtime ( dev. features pending )
 
 The AWS template proposal container images run on Qrack's native C++ simulation
 
