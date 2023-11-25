@@ -7,6 +7,10 @@ ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64:${LD_LIBRARY_P
 # upgrade image because of nv not upgrading
 RUN apt update && apt -y upgrade && apt clean all
 
+# fetch qrack deb package
+RUN add-apt-repository -y ppa:wrathfulspatula/vm6502q
+RUN apt install -y libqrack-dev
+
 # fetch cuquantum
 RUN apt install -y git cuquantum cuquantum-dev libcutensor1 libcutensor-dev libcutensor-doc && apt clean all
 RUN git clone --depth=1 https://github.com/NVIDIA/cuQuantum.git
