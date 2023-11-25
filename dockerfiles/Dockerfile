@@ -8,7 +8,8 @@ ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64:${LD_LIBRARY_P
 RUN apt update && apt -y upgrade && apt clean all
 
 # fetch qrack-dev deb package
-RUN add-apt-repository -y ppa:wrathfulspatula/vm6502q
+RUN apt update && apt install -y software-properties-common && apt clean
+RUN add-apt-repository -y ppa:wrathfulspatula/vm6502q && apt clean
 RUN apt install -y libqrack-dev
 
 # fetch cuquantum
