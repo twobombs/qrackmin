@@ -7,7 +7,7 @@ ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64:${LD_LIBRARY_P
 # upgrade image because of nv not upgrading
 RUN apt update && apt -y upgrade && apt clean all
 
-# fetch qrack deb package
+# fetch qrack-dev deb package
 RUN add-apt-repository -y ppa:wrathfulspatula/vm6502q
 RUN apt install -y libqrack-dev
 
@@ -42,22 +42,21 @@ RUN cp -r /qrack /qrack8cuda
 RUN apt-get update && apt-get -y install build-essential cmake openssh-server wget vim-common opencl-headers curl libfreetype6-dev autotools-dev libicu-dev libbz2-dev libboost-all-dev && apt-get clean all
 
 # CUDA Qrack install & dependancies 
-RUN cd /qrackcuda/include && mkdir CL && cd /var/log && mkdir qrack && cd /qrackcuda && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=5 -DUINTPOW=6 -DQBCAPPOW=6 -DENABLE_COMPLEX_X2=ON -DENABLE_OCL_MEM_GUARDS=ON -DENABLE_CUDA=ON -DENABLE_OPENCL=OFF -DQRACK_CUDA_ARCHITECTURES=50 .. && make -i -k -j 2 all && make install
-# 64Qrack install & dependancies
-RUN cd /qrack64cuda/include && mkdir CL && cd /qrack64cuda && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=6 -DUINTPOW=6 -DQBCAPPOW=7 -DENABLE_COMPLEX_X2=ON -DENABLE_OCL_MEM_GUARDS=ON -DENABLE_CUDA=ON -DENABLE_OPENCL=OFF -DQRACK_CUDA_ARCHITECTURES=50 .. && make -i -k -j 2 all && make install
+RUN cd /qrackcuda/include && mkdir CL && cd /var/log && mkdir qrack && cd /qrackcuda && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=5 -DUINTPOW=6 -DQBCAPPOW=6 -DENABLE_COMPLEX_X2=ON -DENABLE_OCL_MEM_GUARDS=ON -DENABLE_CUDA=ON -DENABLE_OPENCL=OFF -DQRACK_CUDA_ARCHITECTURES=50 .. && make -i -k -j 2 all 
+RUN cd /qrack64cuda/include && mkdir CL && cd /qrack64cuda && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=6 -DUINTPOW=6 -DQBCAPPOW=7 -DENABLE_COMPLEX_X2=ON -DENABLE_OCL_MEM_GUARDS=ON -DENABLE_CUDA=ON -DENABLE_OPENCL=OFF -DQRACK_CUDA_ARCHITECTURES=50 .. && make -i -k -j 2 all
 # SmallQrack install & dependancies
-RUN cd /qrack16cuda/include && mkdir CL && cd /qrack16cuda && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=4 -DUINTPOW=5 -DQBCAPPOW=5 -DENABLE_COMPLEX_X2=OFF -DENABLE_OCL_MEM_GUARDS=ON -DENABLE_CUDA=ON -DENABLE_OPENCL=OFF -DQRACK_CUDA_ARCHITECTURES=50 .. && make -i -k -j 2 all && make install
+RUN cd /qrack16cuda/include && mkdir CL && cd /qrack16cuda && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=4 -DUINTPOW=5 -DQBCAPPOW=5 -DENABLE_COMPLEX_X2=OFF -DENABLE_OCL_MEM_GUARDS=ON -DENABLE_CUDA=ON -DENABLE_OPENCL=OFF -DQRACK_CUDA_ARCHITECTURES=50 .. && make -i -k -j 2 all
 # BigQrack install & dependancies
-RUN cd /qrack128cuda/include && mkdir CL && cd /qrack128cuda && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=6 -DUINTPOW=6 -DQBCAPPOW=12 -DENABLE_RDRAND=OFF -DENABLE_COMPLEX_X2=ON -DENABLE_OCL_MEM_GUARDS=ON -DENABLE_CUDA=ON -DENABLE_OPENCL=OFF -DQRACK_CUDA_ARCHITECTURES=50 .. && make -i -k -j 2 all && make install
+RUN cd /qrack128cuda/include && mkdir CL && cd /qrack128cuda && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=6 -DUINTPOW=6 -DQBCAPPOW=12 -DENABLE_RDRAND=OFF -DENABLE_COMPLEX_X2=ON -DENABLE_OCL_MEM_GUARDS=ON -DENABLE_CUDA=ON -DENABLE_OPENCL=OFF -DQRACK_CUDA_ARCHITECTURES=50 .. && make -i -k -j 2 all
 
 # Qrack install & dependancies 
-RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=5 -DUINTPOW=6 -DQBCAPPOW=6 -DENABLE_COMPLEX_X2=ON .. && make -i -k -j 2 all && make install
+RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=5 -DUINTPOW=6 -DQBCAPPOW=6 -DENABLE_COMPLEX_X2=ON .. && make -i -k -j 2 all
 # 64Qrack install & dependancies
-RUN cd /qrack64/include && mkdir CL && cd /qrack64 && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=6 -DUINTPOW=6 -DQBCAPPOW=7 -DENABLE_COMPLEX_X2=ON .. && make -i -k -j 2 all && make install
+RUN cd /qrack64/include && mkdir CL && cd /qrack64 && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=6 -DUINTPOW=6 -DQBCAPPOW=7 -DENABLE_COMPLEX_X2=ON .. && make -i -k -j 2 all 
 # SmallQrack install & dependancies
-RUN cd /qrack16/include && mkdir CL && cd /qrack16 && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=4 -DUINTPOW=5 -DQBCAPPOW=5 -DENABLE_COMPLEX_X2=OFF -DENABLE_OCL_MEM_GUARDS=ON .. && make -i -k -j 2 all && make install
+RUN cd /qrack16/include && mkdir CL && cd /qrack16 && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=4 -DUINTPOW=5 -DQBCAPPOW=5 -DENABLE_COMPLEX_X2=OFF -DENABLE_OCL_MEM_GUARDS=ON .. && make -i -k -j 2 all
 # BigQrack install & dependancies
-RUN cd /qrack128/include && mkdir CL && cd /qrack128 && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=6 -DUINTPOW=6 -DQBCAPPOW=12 -DENABLE_RDRAND=OFF -DENABLE_COMPLEX_X2=ON .. && make -i -k -j 2 all && make install
+RUN cd /qrack128/include && mkdir CL && cd /qrack128 && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=6 -DUINTPOW=6 -DQBCAPPOW=12 -DENABLE_RDRAND=OFF -DENABLE_COMPLEX_X2=ON .. && make -i -k -j 2 all
 
 # fetch thereminq & run/build scripts
 RUN git clone --depth=1 https://github.com/twobombs/thereminq.git && cd /thereminq/runscripts/ && chmod 744 * && cp run-* /root/
