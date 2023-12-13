@@ -3,7 +3,7 @@
 [`:latest`](https://github.com/twobombs/qrackmin/blob/main/dockerfiles/Dockerfile) container image is meant to be used on a single node with Nvidia-Docker2 and Linux support
 
 ```bash
-docker run --gpus all --device=/dev/dri:/dev/dri --privileged -d twobombs/qrackmin[:tag]
+docker run --gpus all --device=/dev/dri:/dev/dri --privileged -d twobombs/qrackmin[:tag] [--memory 24G --swap-memory 2T]
 ````
 
 - `-v /var/log/qrack:/var/log/qrack` for saving of measured results outside container
