@@ -11,15 +11,19 @@ RUN pip3 install --upgrade pip
 # install build features
 RUN apt-get update && apt-get -y install git build-essential cmake openssh-server wget vim-common python3-setuptools opencl-headers curl libfreetype6-dev autotools-dev libicu-dev libbz2-dev libboost-all-dev && apt-get clean all
 
-# clone repos
+# clone repos with qrack and providers
 RUN git clone --depth=1 --recursive https://github.com/unitaryfund/qrack.git
 RUN git clone --depth=1 --recursive https://github.com/unitaryfund/pyqrack.git
+RUN git clone --depth=1 https://github.com/vm6502q/qiskit-qrack-provider.git
+RUN git clone --depth=1 hhttps://github.com/vm6502q/cirq-qrack.git
 
 # Qrack install & dependancies without OpenCL for CPU only processing
 RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=5 -DUINTPOW=6 -DQBCAPPOW=6 -DENABLE_COMPLEX_X2=ON -DENABLE_OPENCL=OFF .. && make -i -k -j 2 all && make install
 
-# install PyQrack
+# install PyQrack, qiskit & cirq qrack-provider
 RUN cd /pyqrack &&  pip3 install .
+RUN cd /qiskit-qrack-provider &&  pip3 install .
+RUN cd /cirq-qrack &&  pip3 install .
 
 # fetch pycrack jupyter repo and convert to python 
 RUN pip3 install jupyter jupytext 
@@ -29,4 +33,6 @@ RUN cd pyqrack-jupyter && jupyter nbconvert --to script *.ipynb
 # set defailt entrypoint 
 COPY run-scripts/run-python /run-python
 RUN chmod 744 run-python
-ENTRYPOINT /run-python
+
+ENV SAGEMAKER_PROGRAM /pyqrack-jupyter/RCS_nearest-neighbor_benchmark.py
+ENTRYPOINT ipython /pyqrack-jupyter/RCS_nearest-neighbor_benchmark.py
