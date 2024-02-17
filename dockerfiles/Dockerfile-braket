@@ -38,7 +38,8 @@ RUN cd pyqrack-jupyter && jupyter nbconvert --to script *.ipynb
 # set default entrypoint 
 COPY run-scripts/run-python /run-python
 RUN chmod 744 run-python
-# placeholder for AWS BraKE service init
+
+# placeholder for AWS|BraKET> service init
 COPY /run-scripts/braket_container.py /braket_container.py
 
 ENV SAGEMAKER_PROGRAM /pyqrack-jupyter/RCS_nearest-neighbor_benchmark.py
