@@ -21,7 +21,6 @@ RUN git clone --depth=1 https://github.com/vm6502q/cirq-qrack.git
 RUN git clone --depth=1 https://github.com/amazon-braket/amazon-braket-default-simulator-python.git
 RUN git clone --depth=1 https://github.com/amazon-braket/amazon-braket-containers.git
 
-
 # Qrack install & dependancies without OpenCL for CPU only processing
 RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=5 -DUINTPOW=6 -DQBCAPPOW=6 -DENABLE_COMPLEX_X2=ON -DENABLE_OPENCL=OFF .. && make -i -k -j 2 all && make install
 
