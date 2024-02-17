@@ -35,9 +35,11 @@ RUN pip3 install jupyter jupytext
 RUN git clone --depth=1 https://github.com/vm6502q/pyqrack-jupyter.git 
 RUN cd pyqrack-jupyter && jupyter nbconvert --to script *.ipynb
 
-# set defailt entrypoint 
+# set default entrypoint 
 COPY run-scripts/run-python /run-python
 RUN chmod 744 run-python
+# placeholder for AWS BraKE service init
+COPY /run-scripts/braket_container.py /braket_container.py
 
 ENV SAGEMAKER_PROGRAM /pyqrack-jupyter/RCS_nearest-neighbor_benchmark.py
 ENTRYPOINT ipython /pyqrack-jupyter/RCS_nearest-neighbor_benchmark.py
