@@ -18,7 +18,7 @@ docker exec -ti [containerID] bash
 
 ---------------
 
-- ### `Qrackmin:AWS` - `Qrackmin:PYTHON` - `Qrackmin:QISKIT`
+- ### `Qrackmin:AWS` - `Qrackmin:BRAKET` - `Qrackmin:QISKIT`
   on demand AWS template proposals ( in active development )
 
 - [`:AWS`](https://github.com/twobombs/qrackmin/blob/main/dockerfiles/Dockerfile-aws) boilerplate binary runtime code for Qrack as a Service ( benchmarks output )
