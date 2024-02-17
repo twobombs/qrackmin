@@ -21,17 +21,11 @@ docker exec -ti [containerID] bash
 - ### `Qrackmin:AWS` - `Qrackmin:PYTHON` - `Qrackmin:QISKIT`
   on demand AWS template proposals ( in active development )
 
-- [`:AWS`](https://github.com/twobombs/qrackmin/blob/main/dockerfiles/Dockerfile-aws) boilerplate code for Qrack as a Service ( benchmarks output )
+- [`:AWS`](https://github.com/twobombs/qrackmin/blob/main/dockerfiles/Dockerfile-aws) boilerplate binary runtime code for Qrack as a Service ( benchmarks output )
 
-![image](https://github.com/twobombs/qrackmin/assets/12692227/02f74309-bb42-43fd-b0bd-8197cce9835e)
+- [`:BRAKET`](https://github.com/twobombs/qrackmin/blob/main/dockerfiles/Dockerfile-braket) boilerplate python runtime code for `PyQrack` as a `|BraKET>` container service
 
-- [`:PYTHON`](https://github.com/twobombs/qrackmin/blob/main/dockerfiles/Dockerfile-python) boilerplate code for PyQrack as a notebook container runtime
-
-![imagepython](https://github.com/twobombs/qrackmin/assets/12692227/008a8a06-7980-47e6-b75e-a09685f879c0)
-
-- [`:QISKIT`](https://github.com/twobombs/qrackmin/blob/main/dockerfiles/Dockerfile-qiskit) boilerplate code to run Qiskit notebooks and Python container runtime ( dev. features pending )
-
-The AWS template proposal container images run on Qrack's native C++ simulation and have only minimal OpenCL support
+- [`:QISKIT`](https://github.com/twobombs/qrackmin/blob/main/dockerfiles/Dockerfile-qiskit) boilerplate for `Qiskit` more layers on top of `:BRAKET` container runtime ( dev. features/integration pending )
 
 ---------------
 
