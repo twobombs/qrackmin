@@ -68,5 +68,4 @@ You will be asked two questions:
 
 ---------------
 
-#### Credits go to Dan Strano for creating Qrack
-https://github.com/unitaryfund/qrack
+#### Credits go to Dan Strano for creating [`Qrack`](https://github.com/unitaryfund/qrack)
