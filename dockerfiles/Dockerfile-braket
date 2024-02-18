@@ -16,6 +16,7 @@ RUN git clone --depth=1 --recursive https://github.com/unitaryfund/qrack.git
 RUN git clone --depth=1 --recursive https://github.com/unitaryfund/pyqrack.git
 RUN git clone --depth=1 https://github.com/vm6502q/qiskit-qrack-provider.git
 RUN git clone --depth=1 https://github.com/vm6502q/cirq-qrack.git
+RUN git clone --depth=1 https://github.com/qiskit-community/qiskit-braket-provider.git
 
 # fetch aws braket sim repo
 RUN git clone --depth=1 https://github.com/amazon-braket/amazon-braket-default-simulator-python.git
