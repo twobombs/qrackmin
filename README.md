@@ -40,7 +40,7 @@ docker exec -ti [containerID] bash
 
 - ### Qrackmin`:VCL` - Qrack@VCL with node support
 
-[`:vcl`](https://github.com/twobombs/qrackmin/blob/main/dockerfiles/Dockerfile-vcl) contains the VCL binaries to run VCL as a backend and host
+The [`:vcl`](https://github.com/twobombs/qrackmin/blob/main/dockerfiles/Dockerfile-vcl) tag contains VCL binaries that are copyrighted by Amnon Barak to run VCL as a backend and host
 
 #### On the host the following directory structure needs to be created 
 `sudo mkdir /var/log/vcl /var/log/vcl/etc /var/log/vcl/etc/vcl/ /var/log/vcl/etc/init.d /var/log/vcl/usr /var/log/vcl/usr/bin /var/log/vcl/etc/rc0.d /var/log/vcl/etc/rc1.d /var/log/vcl/etc/rc2.d /var/log/vcl/etc/rc3.d /var/log/vcl/etc/rc4.d /var/log/vcl/etc/rc5.d /var/log/vcl/etc/rc6.d`
@@ -60,14 +60,11 @@ You will be asked two questions:
 
 ---------------
 
-#### A Full VDI host experience is avaliable in `ThereminQ:vcl-controller`
-https://github.com/twobombs/thereminq#to-run-thereminq-as-a-virtualcl-controller
+#### A Full VDI host experience is avaliable in [`ThereminQ:vcl-controller`](https://github.com/twobombs/thereminq#to-run-thereminq-as-a-virtualcl-controller)
 
-### Follow the guide for running VCL in a cluster [here](https://mosix.cs.huji.ac.il/vcl/VCL_Guide.pdf)
+### Follow the guide for running [`VCL`](https://mosix.cs.huji.ac.il/txt_vcl.html) in a cluster [here](https://mosix.cs.huji.ac.il/vcl/VCL_Guide.pdf)
 
-### For multi-host setup please look [here](https://docs.docker.com/engine/swarm/swarm-tutorial/create-swarm/)
-
-Zerotier https://www.zerotier.com/
+### For multi-host setup please look [Docker Swarm](https://docs.docker.com/engine/swarm/swarm-tutorial/create-swarm/) and [`Zerotier`](https://www.zerotier.com/)
 
 ---------------
 
