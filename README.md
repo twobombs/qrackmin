@@ -64,7 +64,7 @@ You will be asked two questions:
 
 #### Follow the guide for running [`VCL`](https://mosix.cs.huji.ac.il/txt_vcl.html) in a cluster [here](https://mosix.cs.huji.ac.il/vcl/VCL_Guide.pdf)
 
-#### For multi-host setup please look [Docker Swarm](https://docs.docker.com/engine/swarm/swarm-tutorial/create-swarm/) and [`Zerotier`](https://www.zerotier.com/)
+#### For multi-host setup please look [`Docker Swarm`](https://docs.docker.com/engine/swarm/swarm-tutorial/create-swarm/) and [`Zerotier`](https://www.zerotier.com/)
 
 ---------------
 
