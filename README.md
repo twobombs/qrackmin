@@ -40,7 +40,7 @@ docker exec -ti [containerID] bash
 
 - ### Qrackmin`:VCL` - Qrack@VCL with node support
 
-The [`:vcl`](https://github.com/twobombs/qrackmin/blob/main/dockerfiles/Dockerfile-vcl) tag contains VCL binaries that are copyrighted by Amnon Barak to run VCL as a backend and host
+The [`:vcl`](https://github.com/twobombs/qrackmin/blob/main/dockerfiles/Dockerfile-vcl) tag contains [`VCL`](https://mosix.cs.huji.ac.il/txt_vcl.html) binaries that are copyrighted by Amnon Barak to run VCL as a backend and host
 
 #### On the host the following directory structure needs to be created 
 `sudo mkdir /var/log/vcl /var/log/vcl/etc /var/log/vcl/etc/vcl/ /var/log/vcl/etc/init.d /var/log/vcl/usr /var/log/vcl/usr/bin /var/log/vcl/etc/rc0.d /var/log/vcl/etc/rc1.d /var/log/vcl/etc/rc2.d /var/log/vcl/etc/rc3.d /var/log/vcl/etc/rc4.d /var/log/vcl/etc/rc5.d /var/log/vcl/etc/rc6.d`
