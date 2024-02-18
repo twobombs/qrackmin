@@ -62,11 +62,11 @@ You will be asked two questions:
 
 #### A Full VDI host experience is avaliable in [`ThereminQ:vcl-controller`](https://github.com/twobombs/thereminq#to-run-thereminq-as-a-virtualcl-controller)
 
-### Follow the guide for running [`VCL`](https://mosix.cs.huji.ac.il/txt_vcl.html) in a cluster [here](https://mosix.cs.huji.ac.il/vcl/VCL_Guide.pdf)
+#### Follow the guide for running [`VCL`](https://mosix.cs.huji.ac.il/txt_vcl.html) in a cluster [here](https://mosix.cs.huji.ac.il/vcl/VCL_Guide.pdf)
 
-### For multi-host setup please look [Docker Swarm](https://docs.docker.com/engine/swarm/swarm-tutorial/create-swarm/) and [`Zerotier`](https://www.zerotier.com/)
+#### For multi-host setup please look [Docker Swarm](https://docs.docker.com/engine/swarm/swarm-tutorial/create-swarm/) and [`Zerotier`](https://www.zerotier.com/)
 
 ---------------
 
-### Credits go to Dan Strano for creating Qrack
+#### Credits go to Dan Strano for creating Qrack
 https://github.com/unitaryfund/qrack
