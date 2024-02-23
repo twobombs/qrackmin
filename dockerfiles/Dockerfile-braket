@@ -7,7 +7,7 @@ ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64:${LD_LIBRARY_P
 # install git, python+pip and pip aws braket sdk
 RUN apt update && apt install -y git python3-pip && apt clean all
 RUN pip3 install --upgrade pip
-RUN pip3 install amazon-braket-sdk
+RUN pip3 install amazon-braket-sdk qiskit
 
 # install build features
 RUN apt-get update && apt-get -y install git build-essential cmake openssh-server wget vim-common python3-setuptools opencl-headers curl libfreetype6-dev autotools-dev libicu-dev libbz2-dev libboost-all-dev && apt-get clean all
