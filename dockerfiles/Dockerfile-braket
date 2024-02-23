@@ -37,5 +37,5 @@ COPY run-scripts/braket_container.py /braket_container.py
 RUN chmod 744 /braket_container.py
 
 ENV SAGEMAKER_PROGRAM /amazon-braket-qrack-simulator-python/src/braket/qrack_simulator/qrack_simulator.py
-ENTRYPOINT python3 /amazon-braket-qrack-simulator-python/src/braket/qrack_simulator/qrack_simulator.py
-
+# ENTRYPOINT python3 /amazon-braket-qrack-simulator-python/src/braket/qrack_simulator/qrack_simulator.py
+ENTRYPOINT tail -f /dev/null
