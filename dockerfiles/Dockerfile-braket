@@ -31,11 +31,11 @@ RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && c
 RUN cd /pyqrack &&  pip3 install .
 RUN cd /qiskit-qrack-provider &&  pip3 install .
 RUN cd /cirq-qrack &&  pip3 install .
+RUN cd /amazon-braket-qrack-simulator-python && pip3 install .
 
 # placeholder for AWS|BraKET> service init
 COPY run-scripts/braket_container.py /braket_container.py
 RUN chmod 744 /braket_container.py
 
 ENV SAGEMAKER_PROGRAM /amazon-braket-qrack-simulator-python/src/braket/qrack_simulator/qrack_simulator.py
-# ENTRYPOINT python3 /amazon-braket-qrack-simulator-python/src/braket/qrack_simulator/qrack_simulator.py
-ENTRYPOINT tail -f /dev/null
+ENTRYPOINT python3 /amazon-braket-qrack-simulator-python/src/braket/qrack_simulator/qrack_simulator.py
