@@ -25,7 +25,7 @@ docker exec -ti [containerID] bash
 
 - [`:BRAKET`](https://github.com/twobombs/qrackmin/blob/main/dockerfiles/Dockerfile-braket) boilerplate python runtime code for `PyQrack` as a `|BraKET>` container service
 
-- [`:QISKIT`](https://github.com/twobombs/qrackmin/blob/main/dockerfiles/Dockerfile-qiskit) boilerplate for `Qiskit` more layers on top of `:BRAKET` container runtime ( dev. features/integration pending )
+- [`:QISKIT`](https://github.com/twobombs/qrackmin/blob/main/dockerfiles/Dockerfile-qiskit) boilerplate for `Qiskit` more layers on top of `:BRAKET` container runtime ( features/integration pending )
 
 ---------------
 
