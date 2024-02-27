@@ -8,30 +8,25 @@ ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64:${LD_LIBRARY_P
 RUN apt update && apt install -y git python3-pip && apt clean all
 
 RUN pip3 install --upgrade pip
-RUN pip3 install amazon-braket-sdk qiskit
+RUN pip3 install amazon-braket-sdk qiskit pyqrack-cuda
 
 # install build features
 RUN apt-get update && apt-get -y install git build-essential cmake openssh-server wget vim-common python3-setuptools opencl-headers curl libfreetype6-dev autotools-dev libicu-dev libbz2-dev libboost-all-dev && apt-get clean all
 
 # clone repos with qrack and providers
 RUN git clone --depth=1 --recursive https://github.com/unitaryfund/qrack.git
-RUN git clone --depth=1 --recursive https://github.com/unitaryfund/pyqrack.git
 RUN git clone --depth=1 https://github.com/vm6502q/qiskit-qrack-provider.git
 RUN git clone --depth=1 https://github.com/vm6502q/cirq-qrack.git
 
-# fetch aws braket sim repo and Qrack BraKET backend repo
+# fetch aws braket sim repos and Qrack BraKET backend repo
 RUN git clone --depth=1 https://github.com/amazon-braket/amazon-braket-default-simulator-python.git
-
 RUN git clone --depth=1 https://github.com/amazon-braket/amazon-braket-containers.git
 RUN git clone --depth=1 https://github.com/amazon-braket/amazon-braket-sdk-python.git
+RUN git clone --depth=1 https://github.com/amazon-braket/amazon-braket-examples.git
 
 RUN git clone --depth=1 https://github.com/vm6502q/amazon-braket-qrack-simulator-python.git
 
-# Qrack install & dependancies for CUDA
-RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=5 -DUINTPOW=6 -DQBCAPPOW=6 -DENABLE_COMPLEX_X2=ON -DENABLE_CUDA=ON -DQRACK_CUDA_ARCHITECTURES=50 -DENABLE_OPENCL=OFF .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all && make install
-
-# install PyQrack, qiskit & cirq qrack-provider
-RUN cd /pyqrack &&  pip3 install .
+# install qrack braket simulator + qiskit & cirq qrack-provider
 RUN cd /qiskit-qrack-provider &&  pip3 install .
 RUN cd /cirq-qrack &&  pip3 install .
 RUN cd /amazon-braket-qrack-simulator-python && pip3 install .
