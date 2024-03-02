@@ -1,7 +1,7 @@
 FROM twobombs/qrackmin
 
 # add VCL
-COPY deploy-scripts/VCL-1.2.5.tbz /VCL-1.2.5.tbz
+COPY deploy-scripts/VCL-1.25.tbz /VCL-1.25.tbz
 RUN tar -xjf VCL-1.25.tbz
 RUN mkdir /var/log/vcl && mkdir /var/log/vcl/etc && mkdir /var/log/vcl/etc/vcl && mkdir /var/log/vcl/etc/init.d && mkdir /var/log/vcl/usr && mkdir /var/log/vcl/usr/bin && mkdir /var/log/vcl/etc/rc0.d && mkdir /var/log/vcl/etc/rc1.d && mkdir /var/log/vcl/etc/rc2.d  &&  mkdir /var/log/vcl/etc/rc3.d && mkdir /var/log/vcl/etc/rc4.d &&  mkdir /var/log/vcl/etc/rc5.d &&  mkdir /var/log/vcl/etc/rc6.d 
 
