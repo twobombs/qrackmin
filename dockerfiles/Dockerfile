@@ -12,10 +12,6 @@ RUN apt update && apt install -y software-properties-common && apt clean
 RUN add-apt-repository -y ppa:wrathfulspatula/vm6502q && apt clean
 RUN apt install -y libqrack-dev
 
-# fetch cuquantum
-RUN apt install -y git cuquantum cuquantum-dev libcutensor1 libcutensor-dev libcutensor-doc && apt clean all
-RUN git clone --depth=1 https://github.com/NVIDIA/cuQuantum.git
-
 # install glvnd ( temp key fix )
 RUN apt-get clean && \
     apt-key adv --fetch-keys "https://developer.download.nvidia.com/compute/cuda/repos/$(cat /etc/os-release | grep '^ID=' | awk -F'=' '{print $2}')$(cat /etc/os-release | grep '^VERSION_ID=' | awk -F'=' '{print $2}' | sed 's/[^0-9]*//g')/x86_64/3bf863cc.pub" && \
