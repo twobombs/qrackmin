@@ -18,10 +18,10 @@ docker exec -ti [containerID] bash
 
 ---------------
 
-- ### `Qrackmin:AWS` - `Qrackmin:BRAKET` - `Qrackmin:QISKIT`
-  on demand AWS template proposals ( in active development )
+- ### `Qrackmin:AWS` - `Qrackmin:BRAKET` 
+  on demand AWS template proposals for x86 and ARM - CUDA, OpenCL and CPU powered
 
-- [`:AWS`](https://github.com/twobombs/qrackmin/blob/main/dockerfiles/Dockerfile-aws) boilerplate binary runtime code for Qrack as a Service ( QFT RND benchmarks output )
+- [`:AWS`](https://github.com/twobombs/qrackmin/blob/main/dockerfiles/Dockerfile-aws) boilerplate binary runtime code for Qrack as a Service - QFT RND benchmarks output
 
 - [`:BRAKET`](https://github.com/twobombs/qrackmin/blob/main/dockerfiles/Dockerfile-braket) boilerplate python runtime code for `PyQrack` as a `|BraKET>` container service
 
