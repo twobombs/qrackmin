@@ -1,4 +1,4 @@
-## Qrackmin - a minimalistic container image for Qrack - OpenCL & CUDA
+## Qrackmin - a minimalistic container for Qrack - OpenCL & CUDA
 
 [`:latest`](https://github.com/twobombs/qrackmin/blob/main/dockerfiles/Dockerfile) container image is meant to be used on a single node with Nvidia-Docker2 and Linux support
 
