@@ -66,4 +66,6 @@ You will be asked two questions:
 
 ---------------
 
-#### Credits go to Dan Strano for creating [`Qrack`](https://github.com/unitaryfund/qrack)
+#### Credits go to Dan Strano for creating [`Qrack`](https://github.com/unitaryfund/qrack) and [`Qimcifa`](https://github.com/vm6502q/qimcifa)
+#### Some rights are reserved and copyrighted to code and functionality in the `Amazon AWS` and the `AWS` and `|BraKET>` container image builds
+
