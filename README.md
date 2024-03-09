@@ -14,7 +14,7 @@ docker exec -ti [containerID] bash
 
 - ThereminQ repo with runfiles is checked out on `/root`
 
-- Windows users should install `WSL2, Docker Desktop, docker.io, nvidia-docker2` to run this ( `CUDA` only )
+- Windows users should install `WSL2, Docker Desktop, docker.io, nvidia-docker2` to run this (`CUDA` only)
 
 ---------------
 
