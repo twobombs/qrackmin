@@ -1,6 +1,6 @@
 FROM twobombs/qrackmin
 
-apt update && apt install pybind11-dev && apt clean all
+RUN apt update && apt install pybind11-dev && apt clean all
 
 # vm6502q/qimcifa has an LGPL license. Report (re)use of code to Dan Strano
 # RUN git clone --depth=1 https://github.com/vm6502q/qimcifa.git && mv qimcifa qimcifa64 && cd /qimcifa64 && cmake -DBIG_INT_BITS=64 . && make
