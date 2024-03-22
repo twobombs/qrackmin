@@ -6,7 +6,7 @@ RUN apt update && apt install -y pybind11-dev && apt clean all
 # RUN git clone --depth=1 https://github.com/vm6502q/qimcifa.git && mv qimcifa qimcifa64 && cd /qimcifa64 && cmake -DBIG_INT_BITS=64 . && make
 
 # 128+ qimcifa with loadbalancer
-RUN git clone --depth=1 https://github.com/vm6502q/qimcifa.git && mv qimcifa qimcifa128 && cd /qimcifa128 && cmake -DBIG_INT_BITS=128 . && make
+RUN git clone --depth=1 https://github.com/vm6502q/qimcifa.git && mv qimcifa qimcifa128 && cd /qimcifa128 && cmake -DBIG_INT_BITS=128 . && make && python3 setup.py build_ext -i
 RUN git clone --depth=1 https://github.com/vm6502q/qimcifa.git && mv qimcifa qimcifa512 && cd /qimcifa512 && cmake -DBIG_INT_BITS=512 . && make
 RUN git clone --depth=1 https://github.com/vm6502q/qimcifa.git && mv qimcifa qimcifa1024 && cd /qimcifa1024 && cmake -DBIG_INT_BITS=1024 . && make
 
