@@ -13,9 +13,9 @@ RUN git clone --depth=1 --recursive https://github.com/vm6502q/Eratosthenes
 RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=5 -DUINTPOW=6 -DQBCAPPOW=6 -DENABLE_COMPLEX_X2=ON -DENABLE_OPENCL=OFF .. && make -i -k -j 2 all && make install
 
 # install PyQrack
-RUN cd /pyqrack &&  pip3 install .
+RUN cd /pyqrack &&  pip3 install --break-system-packages . 
 
 # install Eastothenes
-RUN cd /Eratosthenes && pip3 install .
+RUN cd /Eratosthenes && pip3 install --break-system-packages .
 
 ENTRYPOINT /qrack/_build/benchmarks --optimal-cpu
