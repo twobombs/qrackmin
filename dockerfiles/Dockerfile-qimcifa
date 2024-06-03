@@ -5,7 +5,7 @@ RUN apt update && apt install -y pybind11-dev && apt clean all
 # vm6502q/qimcifa has an LGPL license. Report (re)use of code to Dan Strano
 # RUN git clone --depth=1 https://github.com/vm6502q/qimcifa.git && mv qimcifa qimcifa64 && cd /qimcifa64 && cmake -DBIG_INT_BITS=64 . && make
 
-RUN git clone https://github.com/twobombs/qrackmin.git && cd qrackmin/deploy-scripts && tar -xf qimcifa64.tar.gz /
+RUN git clone --depth=1 https://github.com/twobombs/qrackmin.git && cd qrackmin/deploy-scripts && tar -xf qimcifa64.tar.gz /
 
 # 128+ qimcifa with loadbalancer
 RUN git clone --depth=1 https://github.com/vm6502q/qimcifa.git && mv qimcifa qimcifa128 && cd /qimcifa128 && cmake -DBIG_INT_BITS=128 . && make && python3 setup.py build_ext -i
