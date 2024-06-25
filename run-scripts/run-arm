@@ -1,0 +1,5 @@
+nvidia-smi
+
+./qrack_mac_benchmarks
+
+tail -f /dev/null
