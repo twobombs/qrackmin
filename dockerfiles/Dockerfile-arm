@@ -6,6 +6,10 @@ RUN wget https://github.com/unitaryfund/qrack/releases/download/vm6502q.v9.7.0/q
 ENV PATH /usr/local/nvidia/bin:${PATH}
 ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64:${LD_LIBRARY_PATH}
 
+# pre-pocl 6 arm
+RUN git clone https://github.com/pocl/pocl.git && cd pocl && mkdir build && cd build && cmake -G Ninja -DWITH_LLVM_CONFIG=/usr/bin/llvm-config-14 -DCMAKE_INSTALL_PREFIX=/usr .. && ninja install
+RUN clinfo
+
 COPY run-scripts/run /root/run-arm
 RUN chmod 744 /root/run-arm
 
