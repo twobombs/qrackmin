@@ -17,8 +17,8 @@ RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && c
 RUN cd /pyqrack &&  pip3 install --break-system-packages .  && pip3 cache purge
 
 # install pennylane-qrack
-RUN pip3 install --break-system-packages pennylane-catalyst && pip3 cache purge
-RUN cd pennylane-qrack && mkdir _build && cd _build && cmake -DCPP_STD=14 .. && make all -j$(nproc --all) && make install
+RUN pip3 install --break-system-packages pennylane-catalyst pennylane-qrack && pip3 cache purge
+# RUN cd pennylane-qrack && mkdir _build && cd _build && cmake -DCPP_STD=14 .. && make all -j$(nproc --all) && make install
 
 # install pennylane
 RUN git clone --depth=1 --recursive https://github.com/PennyLaneAI/pennylane.git && pip3 install --break-system-packages pennylane && pip3 cache purge
