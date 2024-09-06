@@ -1,0 +1,28 @@
+FROM nvidia/cuda:12.4.1-devel-ubuntu22.04
+LABEL com.nvidia.volumes.needed="nvidia_driver"
+ENV PATH /usr/local/nvidia/bin:${PATH}
+ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64:${LD_LIBRARY_PATH}
+
+# upgrade image because of nv not upgrading
+RUN apt update && apt -y upgrade && apt clean all
+
+# install features
+RUN apt-get update && apt-get -y install git python3-full python3-pip python3-pybind11 build-essential cmake openssh-server wget vim-common python3-setuptools opencl-headers curl libfreetype6-dev autotools-dev libicu-dev libbz2-dev libboost-all-dev && apt-get clean all
+
+# clone repos
+RUN git clone --recursive --depth=1 https://github.com/unitaryfund/qrack.git
+RUN git clone --recursive --depth=1 https://github.com/unitaryfund/pyqrack.git
+
+# pyqrack examples integration
+RUN git clone --recursive  --depth=1 https://github.com/vm6502q/pyqrack-examples.git
+
+# Qrack install & dependancies without OpenCL for CPU only processing and QBDD optimisations -DQBCAPPOW=7 for 64+ qubits
+RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && cmake cmake -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DFPPOW=4 -DQBCAPPOW=6 -DPSTRIDEPOW=12 -DENABLE_OPENCL=OFF .. && make -i -k -j 2 all && make install
+
+# install PyQrack
+RUN cd /pyqrack &&  pip3 install .  && pip3 cache purge
+
+# fix entrypoint to benchmark qbdd run
+COPY run-scripts/run-qbdd /root/run-qbdd
+RUN chmod 755 /root/run-qbdd
+ENTRYPOINT /root/run-qbdd
