@@ -16,7 +16,7 @@ RUN git clone --recursive --depth=1 https://github.com/unitaryfund/pyqrack.git
 # pyqrack examples integration
 RUN git clone --recursive  --depth=1 https://github.com/vm6502q/pyqrack-examples.git
 
-# Qrack install & dependancies without OpenCL for CPU only processing and QBDD optimisations -DQBCAPPOW=7 for 64+ qubits
+# Qrack install & dependancies without OpenCL for CPU only processing and QBDD optimisations use -DQBCAPPOW=7 for 64+ qubits
 RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && cmake cmake -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DFPPOW=4 -DQBCAPPOW=6 -DPSTRIDEPOW=12 -DENABLE_OPENCL=OFF .. && make -i -k -j 2 all && make install
 
 # install PyQrack
