@@ -4,10 +4,10 @@ ENV PATH /usr/local/nvidia/bin:${PATH}
 ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64:${LD_LIBRARY_PATH}
 
 # upgrade image because of nv not upgrading
-RUN apt update && apt -y upgrade && apt clean all
+RUN apt update && export DEBIAN_FRONTEND=noninteractive && apt -y upgrade && apt clean all
 
 # install features
-RUN apt-get update && apt-get -y install git python3-full python3-pip python3-pybind11 build-essential cmake openssh-server wget vim-common python3-setuptools opencl-headers curl libfreetype6-dev autotools-dev libicu-dev libbz2-dev libboost-all-dev && apt-get clean all
+RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && apt-get -y install git python3-full python3-pip python3-pybind11 build-essential cmake openssh-server wget vim-common python3-setuptools opencl-headers curl libfreetype6-dev autotools-dev libicu-dev libbz2-dev libboost-all-dev && apt-get clean all
 
 # clone repos
 RUN git clone --recursive --depth=1 https://github.com/unitaryfund/qrack.git
