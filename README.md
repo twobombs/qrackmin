@@ -28,7 +28,7 @@ docker exec -ti [containerID] bash
 ---------------
 
 - ### `Qrackmin:pyqrack` - a python enviroment to run benchmarks and tests for pyqrack
-- ### `Qrackmin:qbdd` - a python enviroment to run benchmarks and tests for pyqrack qbdd runs
+- ### `Qrackmin:qbdd` - a python enviroment to run benchmarks and tests for qbdd
 
 ---------------
 
