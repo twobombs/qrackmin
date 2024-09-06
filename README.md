@@ -27,6 +27,11 @@ docker exec -ti [containerID] bash
 
 ---------------
 
+- ### `Qrackmin:python` - a python enviroment to run benchmarks and tests for pyqrack
+- ### `Qrackmin:qbdd` - a python enviroment to run benchmarks and tests for qbdd runs
+
+---------------
+
 - ### `Qrackmin:POCL` - latest & POCL added for CPU-only support
 
 [`:pocl`](https://github.com/twobombs/qrackmin/blob/main/dockerfiles/Dockerfile-pocl) container image adds the generic OpenCL-ICD and is to be used with high memory & CPU count hosts 
