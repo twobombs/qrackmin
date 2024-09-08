@@ -15,9 +15,23 @@ RUN git clone --recursive --depth=1 https://github.com/unitaryfund/pyqrack.git
 
 # pyqrack examples integration
 RUN git clone --recursive  --depth=1 https://github.com/vm6502q/pyqrack-examples.git
+# and copy for prep to other flavours
+RUN cp -r /qrack /qrack128
+RUN cp -r /qrack /qrack64
+RUN cp -r /qrack /qrack16
+RUN cp -r /qrack /qrack8
 
-# Qrack install & dependancies without OpenCL for CPU only processing and QBDD optimisations use -DQBCAPPOW=7 for 64+ qubits
-RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && cmake cmake -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DFPPOW=4 -DQBCAPPOW=6 -DPSTRIDEPOW=12 -DENABLE_OPENCL=OFF .. && make -i -k -j 2 all && make install
+# Qrack QBDD alternative precompiles ( needs make install scripted to be activated in pyqrack)
+# 64Qrack install & dependancies
+RUN cd /qrack64/include && mkdir CL && cd /qrack64 && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DFPPOW=6 -DQBCAPPOW=7 -DPSTRIDEPOW=12 -DENABLE_OPENCL=OFF .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all && make clean
+# SmallQrack install & dependancies
+RUN cd /qrack16/include && mkdir CL && cd /qrack16 && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DFPPOW=4 -DQBCAPPOW=5 -DPSTRIDEPOW=12 -DENABLE_OPENCL=OFF .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all && make clean
+# BigQrack install & dependancies ( lower  -DQBCAPPOW=7 for 64+ qubits )
+RUN cd /qrack128/include && mkdir CL && cd /qrack128 && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DFPPOW=6 -DQBCAPPOW=7 -DPSTRIDEPOW=12 -DENABLE_OPENCL=OFF .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all && make clean
+
+# Qrack QBDD default install & dependancies without OpenCL for CPU only processing and fp16 QBDD optimisations use -DQBCAPPOW=7 for 64+ qubits
+RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && cmake cmake -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DFPPOW=4 -DQBCAPPOW=6 -DPSTRIDEPOW=12 -DENABLE_OPENCL=OFF .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all && make install
+
 
 # install PyQrack
 RUN cd /pyqrack &&  pip3 install .  && pip3 cache purge
