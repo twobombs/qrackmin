@@ -18,7 +18,7 @@ RUN git clone --recursive  --depth=1 --recursive https://github.com/PennyLaneAI/
 RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=5 -DUINTPOW=6 -DQBCAPPOW=6 -DENABLE_COMPLEX_X2=ON -DENABLE_OPENCL=OFF .. && make -i -k -j 2 all && make install
 
 # install PyQrack
-RUN cd /pyqrack &&  pip3 install --break-system-packages .  && pip3 cache purge
+RUN cd /pyqrack &&  pip3 install .  && pip3 cache purge
 
 # install pennylane-qrack
 RUN pip3 install pennylane-catalyst pennylane-qrack && pip3 cache purge
