@@ -6,11 +6,11 @@
 export QRACK_QTENSORNETWORK_THRESHOLD_QB=-1
 # no statevector, just qbdd
 export QRACK_QBDT_HYBRID_THRESHOLD=2
-cd pyqrack-examples
+cd /pyqrack-examples
 
-for i in {5..32}; do
+for i in {5..64}; do
  for (( d=4; d <= i; d++ )); do
     echo number of qubits $i depth $d
-    python3 qbddrp_nn.py 0 $i $d 2>errors_$(echo $i)_$(echo $d).txt 1>qbdd_$(echo $i)_$(echo $d).txt &
+    python3 qbddrp_nn.py 0 $i $d 2>errors_$(echo $i)_$(echo $d).txt 1>qbdd_0_$(echo $i)_$(echo $d).txt &
  done
 done
