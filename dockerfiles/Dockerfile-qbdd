@@ -23,14 +23,14 @@ RUN cp -r /qrack /qrack8
 
 # Qrack QBDD alternative precompiles ( needs make install scripted to be activated in pyqrack)
 # 64Qrack install & dependancies ( with -DFPPOW=5 set to 5 instead of 7 )
-RUN cd /qrack64/include && mkdir CL && cd /qrack64 && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DUINTPOW=6 -DFPPOW=5 -DQBCAPPOW=7 -DPSTRIDEPOW=12 -DENABLE_OPENCL=OFF .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all
+RUN cd /qrack64/include && mkdir CL && cd /qrack64 && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DENABLE_PTHREAD=OFF -DENABLE_RDRAND=OFF -DUINTPOW=6 -DFPPOW=5 -DQBCAPPOW=7 -DPSTRIDEPOW=12 -DENABLE_OPENCL=OFF .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all
 # SmallQrack install & dependancies
-RUN cd /qrack16/include && mkdir CL && cd /qrack16 && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DUINTPOW=5 -DFPPOW=4 -DQBCAPPOW=5 -DPSTRIDEPOW=12 -DENABLE_OPENCL=OFF .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all
+RUN cd /qrack16/include && mkdir CL && cd /qrack16 && mkdir _build && cd _build && cmake -DENABLE_PTHREAD=OFF -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DUINTPOW=5 -DFPPOW=5 -DQBCAPPOW=5 -DPSTRIDEPOW=12 -DENABLE_OPENCL=OFF .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all
 # BigQrack install & dependancies ( lower  -DQBCAPPOW=7 for 64+ qubits )
-RUN cd /qrack128/include && mkdir CL && cd /qrack128 && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DUINTPOW=6 -DFPPOW=6 -DQBCAPPOW=7 -DPSTRIDEPOW=12 -DENABLE_OPENCL=OFF .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all
+RUN cd /qrack128/include && mkdir CL && cd /qrack128 && mkdir _build && cd _build && cmake -DENABLE_PTHREAD=OFF -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DUINTPOW=6 -DFPPOW=6 -DQBCAPPOW=7 -DPSTRIDEPOW=12 -DENABLE_OPENCL=OFF .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all
 
 # Qrack QBDD default install & dependancies without OpenCL for CPU only processing and fp16 QBDD optimisations use -DQBCAPPOW=7 for 64+ qubits
-RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && cmake cmake -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DUINTPOW=6 -DFPPOW=4 -DQBCAPPOW=6 -DPSTRIDEPOW=12 -DENABLE_OPENCL=OFF .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all && make install
+RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && cmake cmake -DENABLE_PTHREAD=OFF -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DUINTPOW=6 -DFPPOW=5 -DQBCAPPOW=6 -DPSTRIDEPOW=12 -DENABLE_OPENCL=OFF .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all && make install
 
 # install PyQrack
 RUN cd /pyqrack &&  pip3 install .  && pip3 cache purge
