@@ -1,5 +1,5 @@
 #!/bin/bash
-# massively multithreaded qbdd range check
+# massively multithreaded qbdd nn range check
 # requirements are server node level specs
 
 # no backwards lightcone
