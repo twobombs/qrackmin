@@ -11,6 +11,6 @@ cd /pyqrack-examples
 for i in {5..64}; do
  for (( d=4; d <= i; d++ )); do
     echo number of qubits $i depth $d
-    python3 qbddrp_nn.py 0 $i $d 2>errors_$(echo $i)_$(echo $d).txt 1>qbdd_0_$(echo $i)_$(echo $d).txt &
+    python3 qbddrp_nn.py 0 $i $d 2>errors_nn_$(echo $i)_$(echo $d).txt 1>>qbdd_nn_0_$(echo $i).txt &
  done
 done
