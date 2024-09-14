@@ -2,6 +2,9 @@
 # massively multithreaded qbdd 49 qubit nn odd orbifold range check
 # requirements are server node level specs
 
+# replace 'pyQrack engine' for 64+ qubits operations
+cd /qrack64/_build && make install
+
 # no backwards lightcone
 export QRACK_QTENSORNETWORK_THRESHOLD_QB=-1
 # no statevector, just qbdd
