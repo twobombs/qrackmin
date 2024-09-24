@@ -1,0 +1,17 @@
+#!/bin/bash
+# massively multithreaded qbdd nn odd orbifold range check
+# requirements are server node level specs
+
+# enable lightcone
+export QRACK_QTENSORNETWORK_THRESHOLD_QB=1
+# no statevector, just qbdd
+export QRACK_QBDT_HYBRID_THRESHOLD=2
+cd /pyqrack-examples
+
+for i in {53..54}; do
+ for (( d=4; d <= i; d++ )); do
+    echo number of qubits $i depth $d
+    python3 qbddrp_sycamore_2019.py 0 $d 2>>errors_qbddrp_sycamore_2019.txt 1>>qbddrp_sycamore_2019_$(echo $i).txt &
+    sleep 1
+ done
+done
