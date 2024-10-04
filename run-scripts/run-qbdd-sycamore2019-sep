@@ -8,11 +8,11 @@ export QRACK_QBDT_HYBRID_THRESHOLD=2
 cd /pyqrack-examples/qbdd
 
 for i in {0..9}; do
- for (( d=4; d <= 6; d++ )); do
+ for (( d=6; d <= 20; d++ )); do
     echo 2019 at 53 iteration at depth $d and sep .00$i
 
     export QRACK_QBDT_SEPARABILITY_THRESHOLD=0.00$i
-    python3 qbdd_sycamore_2019.py $d 2>>errors_qbdd_sycamore_2019.txt 1>>qbdd_sycamore_2019_depth_$(echo $d)_sep_000$(echo $i).txt &
+    python3 qbdd_sycamore_2019.py $d 2>>errors_qbdd_sycamore_2019.txt 1>>qbdd_sycamore_2019_depth_$(echo $d)_sep_00$(echo $i).txt &
     sleep 1
 
   done
