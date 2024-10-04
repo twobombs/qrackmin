@@ -12,7 +12,7 @@ for i in {1..9}; do
     echo 2019 at 52 iteration at depth $d and sep $i
 
     export QRACK_QBDT_SEPARABILYTY_THRESHOLD=0.000$i
-    python3 qbdd_sycamore_2019.py $d 2>>errors_qbdd_sycamore_2019.txt 1>>qbdd_sycamore_2019_$(echo $d).txt &
+    python3 qbdd_sycamore_2019.py $d 2>>errors_qbdd_sycamore_2019.txt 1>>qbdd_sycamore_2019_depth_$(echo $d)_sep_000$(echo $i).txt &
     sleep 1
 
   done
