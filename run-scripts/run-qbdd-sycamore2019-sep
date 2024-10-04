@@ -7,8 +7,8 @@ export QRACK_QBDT_HYBRID_THRESHOLD=2
 
 cd /pyqrack-examples/qbdd
 
-for i in {9..0}; do
- for (( d=6; d <= 20; d++ )); do
+for i in {9..3}; do
+ for (( d=7; d <= 20; d++ )); do
     echo 2019 at 53 iteration at depth $d and sep .00$i
 
     export QRACK_QBDT_SEPARABILITY_THRESHOLD=0.00$i
