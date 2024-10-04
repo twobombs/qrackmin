@@ -6,7 +6,7 @@
 export QRACK_QTENSORNETWORK_THRESHOLD_QB=1
 # no statevector, just qbdd
 export QRACK_QBDT_HYBRID_THRESHOLD=2
-cd /pyqrack-examples
+cd /pyqrack-examples/qbdd
 
 for i in {1..30}; do
  for (( d=4; d <= 7; d++ )); do
