@@ -6,9 +6,7 @@
 - Qrackmin container system deployed in rancher through the ThereminQ [HELM](https://github.com/twobombs/thereminq-helm) definitions
 
 
-<br>
-
-## Docker deployment 
+## Docker deployments
 
 [`:latest`](https://github.com/twobombs/qrackmin/blob/main/dockerfiles/Dockerfile) container image is meant to be used on a single node with Nvidia-Docker2 and Linux support
 
