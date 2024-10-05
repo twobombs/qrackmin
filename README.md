@@ -1,7 +1,13 @@
 ## Qrackmin - a minimalistic container for Qrack - OpenCL & CUDA
 
+<br>
+
 ![Screenshot from 2024-10-05 15-58-16](https://github.com/user-attachments/assets/d84647ea-3158-4e48-98d0-60d884f82283)
-- qrackmin in rancher
+- qrackmin container system deployed in rancher through the TheremninQ HELM definitions
+
+
+<br>
+
 
 [`:latest`](https://github.com/twobombs/qrackmin/blob/main/dockerfiles/Dockerfile) container image is meant to be used on a single node with Nvidia-Docker2 and Linux support
 
