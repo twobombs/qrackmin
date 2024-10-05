@@ -3,7 +3,7 @@
 <br>
 
 ![Screenshot from 2024-10-05 15-58-16](https://github.com/user-attachments/assets/d84647ea-3158-4e48-98d0-60d884f82283)
-- qrackmin container system deployed in rancher through the TheremninQ HELM definitions
+- qrackmin container system deployed in rancher through the ThereminQ [HELM](https://github.com/twobombs/thereminq-helm) definitions
 
 
 <br>
