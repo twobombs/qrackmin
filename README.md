@@ -8,6 +8,7 @@
 
 <br>
 
+## Docker deployment 
 
 [`:latest`](https://github.com/twobombs/qrackmin/blob/main/dockerfiles/Dockerfile) container image is meant to be used on a single node with Nvidia-Docker2 and Linux support
 
