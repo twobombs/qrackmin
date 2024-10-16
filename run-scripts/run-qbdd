@@ -6,4 +6,4 @@ export QRACK_QBDT_HYBRID_THRESHOLD=2
 cd /pyqrack-examples/qbdd && python3 qbdd_nn_fidelity.py 0.002 > /dev/stdout
 
 # end run, do not stop container
-tail -f /dev/null
+# tail -f /dev/null
