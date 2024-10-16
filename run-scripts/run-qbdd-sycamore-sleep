@@ -1,0 +1,15 @@
+# sleep timed sycamore run script 
+# made for use in k8s scale deployment 
+# for subset scraping at deep levels
+
+# enable lightcone
+export QRACK_QTENSORNETWORK_THRESHOLD_QB=1
+# no statevector, just qbdd
+export QRACK_QBDT_HYBRID_THRESHOLD=2
+
+cd /pyqrack-examples/qbdd && python3 qbdd_sycamore_2019.py 7 > /dev/stdout &
+
+sleep 240
+
+# end run, do not stop container
+# tail -f /dev/null
