@@ -1,3 +1,7 @@
 FROM twobombs/qrackmin:qbdd
 
+# fix entrypoint to benchmark qbdd run
+COPY run-scripts/run-qbdd* /root/
+RUN chmod 755 /root/run-qbdd*
+
 ENTRYPOINT /root/run-qbdd-sycamore-sleep
