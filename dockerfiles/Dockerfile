@@ -10,7 +10,7 @@ RUN apt update && apt -y upgrade && apt clean all
 # fetch qrack-dev deb package
 RUN apt update && apt install -y software-properties-common && apt clean
 RUN add-apt-repository -y ppa:wrathfulspatula/vm6502q && apt clean
-RUN apt install -y libqrack-dev
+RUN apt install -y libqrack-dev libeigen3-dev
 
 # install glvnd ( temp key fix )
 RUN apt-get clean && \
