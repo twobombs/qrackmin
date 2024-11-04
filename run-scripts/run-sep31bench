@@ -1,8 +1,10 @@
+cd /qrack/_build/examples
+
+
 for i in {20..31}; do
 
     echo Qrack vs Schmidt decomposition $i
 
-    ./qrack/_build/examples/separability $i 2>>sep_errors.txt 1>>sep_depth_$(echo $d).txt &
-    sleep 1
+    ./separability $i 2>>sep_errors_$i.txt 1>>sep_depth_$i.txt
 
 done
