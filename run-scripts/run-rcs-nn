@@ -1,0 +1,5 @@
+#!/bin/bash
+
+export QRACK_QTENSORNETWORK_THRESHOLD_QB=0
+
+./benchmarks --optimal --max-qubits=36 --single --benchmark-depth=6 --samples=1 test_random_circuit_sampling_nn --measure-output=/var/log/qrack/"measured_random_circuit_sampling_nn_$(date +%F_%R_%S).log"
