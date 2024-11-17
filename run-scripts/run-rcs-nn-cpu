@@ -1,6 +1,7 @@
 #!/bin/bash
 
-export QRACK_QTENSORNETWORK_THRESHOLD_QB=0
-export QRACK_MAX_CPU_QB=32
+export QRACK_QUNIT_SEPARABILITY_THRESHOLD=0.1
+export QRACK_QTENSORNETWORK_THRESHOLD_QB=33
+export QRACK_MAX_CPU_QB=34
 
-time ./benchmarks --optimal-cpu --max-qubits=34 --single --benchmark-depth=6 --samples=1 test_random_circuit_sampling_nn --measure-output=/var/log/qrack/"measured_random_circuit_sampling_nn_$(date +%F_%R_%S).log"
+time ./benchmarks --optimal-cpu --max-qubits=35 --single --benchmark-depth=6 --samples=1 test_random_circuit_sampling_nn --measure-output=/var/log/qrack/"measured_random_circuit_sampling_nn_$(date +%F_%R_%S).log"
