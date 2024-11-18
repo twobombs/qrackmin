@@ -10,6 +10,9 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && apt-get -y instal
 RUN git clone --recursive --depth=1 --recursive https://github.com/unitaryfund/qrack.git
 RUN git clone --recursive --depth=1 --recursive https://github.com/unitaryfund/pyqrack.git
 
+# pyqrack examples integration
+RUN git clone --recursive  --depth=1 https://github.com/vm6502q/pyqrack-examples.git
+
 # pennylane integration
 RUN git clone --recursive --depth=1 --recursive https://github.com/unitaryfund/pennylane-qrack.git
 RUN git clone --recursive  --depth=1 --recursive https://github.com/PennyLaneAI/pennylane.git
