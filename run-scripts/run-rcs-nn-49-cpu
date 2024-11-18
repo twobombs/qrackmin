@@ -1,0 +1,7 @@
+#!/bin/bash
+
+export QRACK_QUNIT_SEPARABILITY_THRESHOLD=1000
+export QRACK_QTENSORNETWORK_THRESHOLD_QB=34
+export QRACK_MAX_CPU_QB=34
+
+time ./benchmarks --optimal-cpu --max-qubits=49 --single --benchmark-depth=7 --samples=100 test_random_circuit_sampling_nn --measure-output=/var/log/qrack/"measured_random_circuit_sampling_nn_$(date +%F_%R_%S).log"
