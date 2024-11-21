@@ -23,9 +23,12 @@ RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && c
 # install PyQrack
 RUN cd /pyqrack &&  pip3 install .  && pip3 cache purge
 
+# install dask
+RUN pip3 install dask-cuda && pip3 cache purge
+
 # install pennylane-qrack
-RUN pip3 install pennylane-catalyst pennylane-qrack && pip3 cache purge
-RUN cd pennylane-qrack && mkdir _build && cd _build && cmake -DCPP_STD=14 .. && make all -j$(nproc --all) && make install
+# RUN pip3 install pennylane-catalyst pennylane-qrack && pip3 cache purge
+# RUN cd pennylane-qrack && mkdir _build && cd _build && cmake -DCPP_STD=14 .. && make all -j$(nproc --all) && make install
 
 # install pennylane
 RUN pip3 install pennylane && pip3 cache purge
