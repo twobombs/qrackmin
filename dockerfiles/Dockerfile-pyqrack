@@ -39,4 +39,4 @@ RUN chmod 755 /root/run*
 ENV NVIDIA_VISIBLE_DEVICES all
 ENV NVIDIA_DRIVER_CAPABILITIES graphics,utility,compute
 
-ENTRYPOINT /qrack/_build/benchmarks --optimal-cpu
+ENTRYPOINT /root/run
