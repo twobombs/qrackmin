@@ -5,7 +5,7 @@ ENV PATH /usr/local/nvidia/bin:${PATH}
 ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64:${LD_LIBRARY_PATH}
 
 # install git, python+pip and pip aws braket sdk
-RUN apt update && apt install -y git python3-pip cmake build-essentials && apt clean all
+RUN apt update && apt install -y git python3-pip cmake build-essential && apt clean all
 
 RUN pip3 install --upgrade pip
 RUN pip3 install amazon-braket-sdk qiskit pyqrack-cuda packaging
