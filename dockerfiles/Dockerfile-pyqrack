@@ -15,7 +15,7 @@ RUN git clone --recursive  --depth=1 https://github.com/vm6502q/pyqrack-examples
 
 # pennylane integration
 RUN git clone --recursive --depth=1 --recursive https://github.com/unitaryfund/pennylane-qrack.git
-RUN git clone --recursive  --depth=1 --recursive https://github.com/PennyLaneAI/pennylane.git
+RUN git clone --recursive --depth=1 --recursive https://github.com/PennyLaneAI/pennylane.git
 
 # Qrack install & dependancies without OpenCL for CPU only processing
 RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=5 -DUINTPOW=6 -DQBCAPPOW=6 -DENABLE_COMPLEX_X2=ON -DENABLE_OPENCL=OFF .. && make -i -k -j 2 all && make install
@@ -24,7 +24,7 @@ RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && c
 RUN cd /pyqrack &&  pip3 install .  && pip3 cache purge
 
 # install dask
-RUN pip3 install dask-cuda && pip3 cache purge
+RUN pip3 install dask-cuda cupy joblib matplotlib && pip3 cache purge
 
 # install pennylane-qrack
 # RUN pip3 install pennylane-catalyst pennylane-qrack && pip3 cache purge
