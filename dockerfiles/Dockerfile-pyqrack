@@ -33,4 +33,10 @@ RUN pip3 install dask-cuda cupy joblib matplotlib && pip3 cache purge
 # install pennylane
 RUN pip3 install pennylane && pip3 cache purge
 
+COPY run-scripts/run* /root/
+RUN chmod 755 /root/run*
+
+ENV NVIDIA_VISIBLE_DEVICES all
+ENV NVIDIA_DRIVER_CAPABILITIES graphics,utility,compute
+
 ENTRYPOINT /qrack/_build/benchmarks --optimal-cpu
