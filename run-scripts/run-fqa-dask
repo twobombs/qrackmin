@@ -1,4 +1,3 @@
-import numpy as np
 import cupy as cp
 import scipy.sparse as sp
 
@@ -7,22 +6,11 @@ import scipy.sparse as sp
 from dask_cuda import LocalCUDACluster
 from dask.distributed import Client
 
-from scipy.sparse.linalg import eigsh
-from joblib import Parallel, delayed
+import numpy as np
 import matplotlib.pyplot as plt
-
-# Set the GPU device for CuPy
-cp.cuda.runtime.setDevice(0)
-
-# Define the system size, fractal dimension, interaction strength, and decoherence rate
-N = 1000
-D = 1.2
-U = 0.7
-gamma = 0.05
-k = 15  # Number of eigenvalues to compute
-
-# Maximum allowed memory for fractal generation (in bytes)
-max_memory = 512 * 1024 * 1024  # 512 MB
+from joblib import Parallel, delayed
+from scipy.sparse import csr_matrix
+from scipy.sparse.linalg import eigsh
 
 # Memory scaling with fractal level (power-law relationship)
 def estimate_memory_usage(level, alpha=1.5):
@@ -48,77 +36,15 @@ def dynamic_fractal_generation(N, D, max_memory):
     fractal_weights = generate_fractal_weights(N, D, max_level)
     return fractal_weights
 
-# Build a sparse Hamiltonian using the Hubbard model
-def build_sparse_hamiltonian(N, U):
-    diag = [-U for _ in range(N)]  # Interaction term
-    off_diag = [-1 for _ in range(N - 1)]  # Hopping term
-    data = diag + off_diag + off_diag
-    rows = list(range(N)) + list(range(N - 1)) + list(range(1, N))
-    cols = list(range(N)) + list(range(1, N)) + list(range(N - 1))
-    H_sparse = sp.csr_matrix((data, (rows, cols)), shape=(N, N))
-    return H_sparse
-
-# Compute eigenvalues and eigenvectors using iterative methods
-def compute_eigenvalues(H_sparse, k):
-    eigenvalues, eigenvectors = eigsh(H_sparse, k=k, which='SA')  # Smallest algebraic
-    return eigenvalues, eigenvectors
-
-# Apply decoherence iteratively for large density matrices
-def apply_decoherence_sparse(rho, gamma, iterations=10):
-    for _ in range(iterations):
-        rho = rho - gamma * (rho @ rho)
-    return rho
-
-# Plot the energy distribution of eigenvalues
-def plot_energy_distribution(eigenvalues):
-    plt.hist(eigenvalues, bins=30, alpha=0.7)
-    plt.xlabel("Energy")
-    plt.ylabel("Density")
-    plt.title("Energy Eigenvalue Distribution")
-    plt.show()
-
-# Block sparse decomposition for parallelization
-def block_sparse_decomposition(H_sparse, block_size):
-    blocks = []
-    for i in range(0, N, block_size):
-        for j in range(0, N, block_size):
-            block = H_sparse[i:i+block_size, j:j+block_size].toarray()
-            blocks.append(block)
-    return blocks
-
-# Solve each block independently using joblib for parallelization
-def solve_block(block):
-    eigenvalues, eigenvectors = eigsh(block, k=5)
-    return eigenvalues, eigenvectors
-
-# Main simulation with dynamic fractal generation, GPU acceleration, and block sparse decomposition
+# Example main simulation
 def main_simulation():
-    # Dynamic fractal generation
+    N = 1000
+    D = 1.2
+    max_memory = 512 * 1024 * 1024  # 512 MB
+
+    # Generate fractal weights
     fractal_weights = dynamic_fractal_generation(N, D, max_memory)
     print("Dynamic Fractal Weights (Sum):", np.sum(fractal_weights))
 
-    # Build sparse Hamiltonian
-    H_sparse = build_sparse_hamiltonian(N, U)
-
-    # Block sparse decomposition
-    block_size = 100
-    blocks = block_sparse_decomposition(H_sparse, block_size)
-
-    # Solve each block in parallel
-    results = Parallel(n_jobs=-1)(delayed(solve_block)(block) for block in blocks)
-
-    # Combine results (e.g., eigenvalues) from all blocks
-    combined_eigenvalues = np.concatenate([result[0] for result in results])
-
-    # Plot the energy distribution
-    plot_energy_distribution(combined_eigenvalues)
-
-    # Proceed with decoherence modeling (if needed)
-    rho = sp.csr_matrix(np.outer(results[0][1][:, 0], results[0][1][:, 0].conj()))
-    rho_decohered = apply_decoherence_sparse(rho, gamma)
-
-    print("Density Matrix Trace (After Decoherence):", rho_decohered.diagonal().sum())
-
 if __name__ == "__main__":
     main_simulation()
-
