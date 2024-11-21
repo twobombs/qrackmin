@@ -4,7 +4,10 @@ import scipy.sparse as sp
 #dask live firing test
 # https://docs.rapids.ai/api/dask-cuda/stable/quickstart/
 from dask_cuda import LocalCUDACluster
+
+# make sure you have started the daskclient on CLI 
 from dask.distributed import Client
+client = Client("127.0.0.1:8786")
 
 import numpy as np
 import matplotlib.pyplot as plt
