@@ -29,7 +29,8 @@ RUN apt-get install -y infiniband-diags ibverbs-utils libibverbs-dev libfabric1 
 RUN apt-get install -y openmpi-bin openmpi-common libopenmpi-dev libgtk2.0-dev
 RUN apt-get install -y librdmacm-dev libpsm2-dev 
 # openmpi benchmark
-RUN git clone https://github.com/forresti/osu-micro-benchmarks.git && cd osu-micro-benchmarks && ./configure CC=mpicc CXX=mpicxx --enable-cuda && make
+RUN git clone https://github.com/forresti/osu-micro-benchmarks.git && cd osu-micro-benchmarks 
+## && ./configure CC=mpicc CXX=mpicxx --enable-cuda && make
 
 # clone repos
 RUN git clone --depth=1 --recursive https://github.com/unitaryfund/qrack.git
