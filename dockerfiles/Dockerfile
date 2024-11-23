@@ -22,12 +22,12 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && apt install -y so
 RUN mkdir -p /etc/OpenCL/vendors && echo "libnvidia-opencl.so.1" > /etc/OpenCL/vendors/nvidia.icd
 
 # install dask
-RUN pip3 install dask-cuda cupy joblib matplotlib && pip3 cache purge
+# RUN pip3 install dask-cuda cupy joblib matplotlib && pip3 cache purge
 
 # install openmpi
 RUN apt-get install -y infiniband-diags ibverbs-utils libibverbs-dev libfabric1 libfabric-dev libpsm2-dev
 RUN apt-get install -y openmpi-bin openmpi-common libopenmpi-dev libgtk2.0-dev
-RUN apt-get install -y librdmacm-dev libpsm2-dev
+RUN apt-get install -y librdmacm-dev libpsm2-dev 
 
 # clone repos
 RUN git clone --depth=1 --recursive https://github.com/unitaryfund/qrack.git
