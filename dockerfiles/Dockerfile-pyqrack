@@ -27,9 +27,9 @@ RUN cd /pyqrack &&  pip3 install .  && pip3 cache purge
 RUN pip3 install dask-cuda cupy joblib matplotlib && pip3 cache purge
 
 # install openmpi
-apt-get install -y infiniband-diags ibverbs-utils libibverbs-dev libfabric1 libfabric-dev libpsm2-dev
-apt-get install -y openmpi-bin openmpi-common libopenmpi-dev libgtk2.0-dev
-apt-get install -y librdmacm-dev libpsm2-dev
+RUN apt-get install -y infiniband-diags ibverbs-utils libibverbs-dev libfabric1 libfabric-dev libpsm2-dev
+RUN apt-get install -y openmpi-bin openmpi-common libopenmpi-dev libgtk2.0-dev
+RUN apt-get install -y librdmacm-dev libpsm2-dev
 
 # install pennylane-qrack
 # RUN pip3 install pennylane-catalyst pennylane-qrack && pip3 cache purge
