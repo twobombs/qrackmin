@@ -15,7 +15,9 @@ RUN apt-get update && apt-get -y install git build-essential cmake openssh-serve
 
 # clone repos with qrack and providers
 RUN git clone --depth=1 --recursive https://github.com/unitaryfund/qrack.git
-RUN git clone https://github.com/vm6502q/qiskit-qrack-provider.git && cd qiskit-qrack-provider && git reset --hard 27e1ec02caa6aa0440f1fe22d070797717d0f55b && git clean -df
+RUN git clone --depth=1 https://github.com/unitaryfund/pyqrack.git
+RUN git clone --depth=1 https://github.com/vm6502q/qiskit-qrack-provider.git 
+## && cd qiskit-qrack-provider && git reset --hard 27e1ec02caa6aa0440f1fe22d070797717d0f55b && git clean -df
 
 RUN git clone --depth=1 https://github.com/vm6502q/cirq-qrack.git
 
@@ -28,8 +30,9 @@ RUN git clone --depth=1 https://github.com/amazon-braket/amazon-braket-examples.
 RUN git clone --depth=1 https://github.com/vm6502q/amazon-braket-qrack-simulator-python.git
 
 # install qrack braket simulator + qiskit & cirq qrack-provider
-RUN cd /qiskit-qrack-provider &&  pip3 install .
-RUN cd /cirq-qrack &&  pip3 install .
+RUN cd /pyqrack && pip3 install .
+RUN cd /qiskit-qrack-provider && pip3 install .
+RUN cd /cirq-qrack && pip3 install .
 RUN cd /amazon-braket-qrack-simulator-python && pip3 install .
 
 ENV SAGEMAKER_PROGRAM /amazon-braket-qrack-simulator-python/src/braket/qrack_simulator/qrack_simulator.py
