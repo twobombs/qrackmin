@@ -35,7 +35,7 @@ RUN git clone https://github.com/forresti/osu-micro-benchmarks.git && cd osu-mic
 # GVirtuS
 RUN apt-get install -y build-essential libxmu-dev libxi-dev libgl-dev libosmesa-dev git liblog4cplus-dev && apt clean all
 RUN git clone https://github.com/gvirtus/GVirtuS.git
-RUN cd GVirutS && mkdir build && cd build && cmake .. && make && make install
+# RUN cd GVirutS && mkdir build && cd build && cmake .. && make && make install
 
 # clone repos
 RUN git clone --depth=1 --recursive https://github.com/unitaryfund/qrack.git
