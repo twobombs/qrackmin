@@ -37,8 +37,9 @@ RUN apt-get install -y build-essential libxmu-dev libxi-dev libgl-dev libosmesa-
 RUN git clone https://github.com/vm6502q/GVirtuS.git
 RUN cd /GVirtuS && mkdir build && cd build && cmake .. && make && make install
 
-# clone repos
+# clone repo
 RUN git clone --depth=1 --recursive https://github.com/unitaryfund/qrack.git
+
 RUN cp -r /qrack /qrack128
 RUN cp -r /qrack /qrack64
 RUN cp -r /qrack /qrack16
@@ -50,6 +51,8 @@ RUN cp -r /qrack /qrack128cuda
 RUN cp -r /qrack /qrack64cuda
 RUN cp -r /qrack /qrack16cuda
 RUN cp -r /qrack /qrack8cuda
+
+RUN cp -r /qrack /qrackcudagvirtus
 
 # install features
 RUN apt-get update && apt-get -y install build-essential cmake openssh-server wget vim-common opencl-headers curl libfreetype6-dev autotools-dev libicu-dev libbz2-dev libboost-all-dev && apt-get clean all
@@ -70,6 +73,9 @@ RUN cd /qrack64/include && mkdir CL && cd /qrack64 && mkdir _build && cd _build 
 RUN cd /qrack16/include && mkdir CL && cd /qrack16 && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=4 -DUINTPOW=5 -DQBCAPPOW=5 -DENABLE_COMPLEX_X2=OFF -DENABLE_OCL_MEM_GUARDS=ON .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all
 # BigQrack install & dependancies
 RUN cd /qrack128/include && mkdir CL && cd /qrack128 && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=6 -DUINTPOW=6 -DQBCAPPOW=12 -DENABLE_RDRAND=OFF -DENABLE_COMPLEX_X2=ON .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all 
+
+# qrack cuda ENABLE_GVIRTUS
+RUN cd /qrackcudagvirtus/include && mkdir CL && cd /var/log && mkdir qrack && cd /qrackcuda && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=5 -DUINTPOW=6 -DQBCAPPOW=6 -DENABLE_COMPLEX_X2=ON -DENABLE_OCL_MEM_GUARDS=ON -DENABLE_CUDA=ON -DENABLE_OPENCL=OFF -DQRACK_CUDA_ARCHITECTURES=50 -DENABLE_GVIRTUS=ON .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all
 
 # fetch thereminq & run/build scripts
 RUN git clone --depth=1 https://github.com/twobombs/thereminq.git && cd /thereminq/runscripts/ && chmod 744 * && cp run-* /root/
