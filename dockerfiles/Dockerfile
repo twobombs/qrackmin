@@ -33,7 +33,7 @@ RUN git clone https://github.com/forresti/osu-micro-benchmarks.git && cd osu-mic
 ## && ./configure CC=mpicc CXX=mpicxx --enable-cuda && make
 
 # GVirtuS
-RUN apt-get install -y build-essential libxmu-dev libxi-dev libgl-dev libosmesa-dev git liblog4cplus-dev cudnn && apt clean all
+RUN apt-get install -y build-essential cmake libxmu-dev libxi-dev libgl-dev libosmesa-dev git liblog4cplus-dev cudnn && apt clean all
 RUN git clone https://github.com/vm6502q/GVirtuS.git
 RUN cd /GVirtuS && mkdir build && cd build && cmake .. && make && make install
 
