@@ -22,7 +22,7 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && apt install -y so
 RUN mkdir -p /etc/OpenCL/vendors && echo "libnvidia-opencl.so.1" > /etc/OpenCL/vendors/nvidia.icd
 
 # install dask
-RUN pip3 install dask-cuda cupy joblib matplotlib && pip3 cache purge
+RUN apt install python3-pip && apt clean all && pip3 install dask-cuda cupy joblib matplotlib && pip3 cache purge
 
 # install openmpi
 RUN apt-get install -y infiniband-diags ibverbs-utils libibverbs-dev libfabric1 libfabric-dev libpsm2-dev && apt clean all
