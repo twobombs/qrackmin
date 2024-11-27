@@ -34,7 +34,9 @@ RUN git clone https://github.com/forresti/osu-micro-benchmarks.git && cd osu-mic
 
 # GVirtuS
 RUN apt-get install -y build-essential cmake libxmu-dev libxi-dev libgl-dev libosmesa-dev git liblog4cplus-dev cudnn && apt clean all
-RUN git clone https://github.com/vm6502q/GVirtuS.git qrack_update && cd /qrack_update && mkdir build && cd build && cmake .. && make && make install
+RUN git clone -b qrack_update https://github.com/vm6502q/GVirtuS.git && cd /GVirtuS && mkdir build && cd build && cmake .. && make -j $(grep -c ^processor /proc/cpuinfo) all && make -j $(grep -c ^processor /proc/cpuinfo) all install
+RUN export GVIRTUS_HOME=/root
+RUN export LD_LIBRARY_PATH=${GVIRTUS_HOME}/lib:${GVIRTUS_HOME}/lib/frontend:${LD_LIBRARY_PATH}
 
 # clone repo
 RUN git clone --depth=1 --recursive https://github.com/unitaryfund/qrack.git
@@ -74,7 +76,7 @@ RUN cd /qrack16/include && mkdir CL && cd /qrack16 && mkdir _build && cd _build 
 RUN cd /qrack128/include && mkdir CL && cd /qrack128 && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=6 -DUINTPOW=6 -DQBCAPPOW=12 -DENABLE_RDRAND=OFF -DENABLE_COMPLEX_X2=ON .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all 
 
 # qrack cuda ENABLE_GVIRTUS
-RUN cd /qrackcudagvirtus/include && mkdir CL && cd /qrackcudagvirtus/ && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DFPPOW=5 -DUINTPOW=6 -DQBCAPPOW=6 -DENABLE_COMPLEX_X2=ON -DENABLE_CUDA=ON -DENABLE_OPENCL=OFF -DQRACK_CUDA_ARCHITECTURES=50 -DENABLE_GVIRTUS=ON .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all
+RUN cd /qrackcudagvirtus/include && mkdir CL && cd /qrackcudagvirtus/ && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DENABLE_OPENCL=OFF -DENABLE_CUDA=ON -DENABLE_GVIRTUS=ON .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all
 
 # fetch thereminq & run/build scripts
 RUN git clone --depth=1 https://github.com/twobombs/thereminq.git && cd /thereminq/runscripts/ && chmod 744 * && cp run-* /root/
