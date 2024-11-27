@@ -4,6 +4,6 @@ nvidia-smi
 
 sleep 10 
 
-watch -n1 nvidia-smi
+nvidia-smi
 
 tail -f /dev/null
