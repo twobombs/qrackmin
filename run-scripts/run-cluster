@@ -2,8 +2,6 @@ nvidia-smi
 
 ./qrack/_build/qrack_cl_precompile
 
-nvidia-smi
-
 export GVIRTUS_HOME=/root/GVirtuS
 bash $GVIRTUS_HOME/bin/gvirtus-backend ${GVIRTUS_HOME}/etc/properties.json &
 
