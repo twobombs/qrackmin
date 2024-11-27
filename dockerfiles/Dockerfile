@@ -36,8 +36,8 @@ RUN git clone https://github.com/forresti/osu-micro-benchmarks.git && cd osu-mic
 RUN apt-get install -y build-essential cmake libxmu-dev libxi-dev libgl-dev libosmesa-dev git liblog4cplus-dev cudnn && apt clean all
 RUN git clone -b qrack_update https://github.com/vm6502q/GVirtuS.git && cd /GVirtuS && mkdir build && cd build && cmake .. && make -j $(grep -c ^processor /proc/cpuinfo) all && make -j $(grep -c ^processor /proc/cpuinfo) all install
 RUN export GVIRTUS_HOME=/root/GVirtuS
+RUN export LD_LIBRARY_PATH=${GVIRTUS_HOME}/lib:${GVIRTUS_HOME}/lib/frontend:${LD_LIBRARY_PATH}
 # $GVIRTUS_HOME/bin/gvirtus-backend ${GVIRTUS_HOME}/etc/properties.json
-# RUN export LD_LIBRARY_PATH=${GVIRTUS_HOME}/lib:${GVIRTUS_HOME}/lib/frontend:${LD_LIBRARY_PATH}
 
 # clone repo
 RUN git clone --depth=1 --recursive https://github.com/unitaryfund/qrack.git
