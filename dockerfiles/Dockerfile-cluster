@@ -8,7 +8,7 @@ ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64:${LD_LIBRARY_P
 RUN apt update && apt -y upgrade && apt clean all
 
 # install dask
-RUN apt install -y python3-pip && apt clean all && pip3 install dask-cuda cupy joblib matplotlib && pip3 cache purge
+RUN apt install -y git curl python3-pip && apt clean all && pip3 install dask-cuda cupy joblib matplotlib && pip3 cache purge
 
 # install openmpi
 RUN apt-get install -y infiniband-diags ibverbs-utils libibverbs-dev libfabric1 libfabric-dev libpsm2-dev && apt clean all
