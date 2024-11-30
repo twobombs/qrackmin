@@ -22,7 +22,7 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && apt install -y so
 RUN mkdir -p /etc/OpenCL/vendors && echo "libnvidia-opencl.so.1" > /etc/OpenCL/vendors/nvidia.icd
 
 # GVirtuS
-RUN apt-get install -y build-essential cmake libxmu-dev libxi-dev libgl-dev libosmesa-dev git liblog4cplus-dev cudnn && apt clean all
+RUN apt-get install -y build-essential cmake librdmacm-dev libibverbs-dev libxmu-dev libxi-dev libgl-dev libosmesa-dev git liblog4cplus-dev cudnn && apt clean all
 RUN git clone -b qrack_update https://github.com/vm6502q/GVirtuS.git && cd /GVirtuS && mkdir build && cd build && cmake .. && make -j $(grep -c ^processor /proc/cpuinfo) all && make -j $(grep -c ^processor /proc/cpuinfo) all install
 RUN export GVIRTUS_HOME=/root/GVirtuS
 RUN export LD_LIBRARY_PATH=${GVIRTUS_HOME}/lib:${GVIRTUS_HOME}/lib/frontend:${LD_LIBRARY_PATH}
