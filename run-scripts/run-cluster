@@ -3,6 +3,6 @@ nvidia-smi
 export GVIRTUS_HOME=/root/GVirtuS
 export LD_LIBRARY_PATH=${GVIRTUS_HOME}/lib:${GVIRTUS_HOME}/lib/frontend:${LD_LIBRARY_PATH}
 
-bash .$GVIRTUS_HOME/bin/gvirtus-backend ${GVIRTUS_HOME}/etc/properties.json &
+sh .$GVIRTUS_HOME/bin/gvirtus-backend ${GVIRTUS_HOME}/etc/properties.json &
 
 tail -f /dev/null
