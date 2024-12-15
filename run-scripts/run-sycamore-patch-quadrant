@@ -4,7 +4,7 @@ cd /pyqrack-examples/rcs
 
 for ((i=4; i<=30; i++)); do
   for ((j=1; j<=i; j++)); do
-    python sycamore_2019_patch_quadrant.py "$i" "$j"
+    python3 sycamore_2019_patch_quadrant.py "$i" "$j"
   done
 done
 
