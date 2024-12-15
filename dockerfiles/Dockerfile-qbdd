@@ -36,6 +36,6 @@ RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && c
 RUN cd /pyqrack &&  pip3 install .  && pip3 cache purge
 
 # fix entrypoint to benchmark qbdd run
-COPY run-scripts/run-qbdd* /root/
-RUN chmod 755 /root/run-qbdd*
+COPY run-scripts/run-* /root/
+RUN chmod 755 /root/run-*
 ENTRYPOINT /root/run-qbdd
