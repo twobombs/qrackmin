@@ -4,6 +4,7 @@ cd /pyqrack-examples/rcs
 
 for ((i=4; i<=30; i++)); do
   for ((j=1; j<=i; j++)); do
+    echo "Running i=$i, j=$j"
     python3 sycamore_2019_patch_quadrant.py "$i" "$j" 2>>errors_sycamore_2019_patch_quadrant.txt 1>>sycamore_2019_patch_quadrant_$(echo $i).txt
   done
 done
