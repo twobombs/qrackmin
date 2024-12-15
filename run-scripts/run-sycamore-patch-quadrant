@@ -1,0 +1,7 @@
+#!/bin/bash
+
+for ((i=4; i<=28; i++)); do
+  for ((j=1; j<=i; j++)); do
+    python sycamore_2019_patch_quadrant.py "$i" "$j"
+  done
+done
