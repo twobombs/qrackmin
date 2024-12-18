@@ -6,8 +6,8 @@ ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64:${LD_LIBRARY_P
 
 # install git, python+pip and pip aws braket sdk
 RUN apt update && apt install -y git python3-pip cmake build-essential && apt clean all
-RUN pip3 install --upgrade pip
-RUN pip3 install amazon-braket-sdk qiskit packaging
+RUN pip3 install --upgrade pip && pip3 cache purge
+RUN pip3 install amazon-braket-sdk qiskit packaging && pip3 cache purge
 # pyqrack-cuda installed by source
 
 # install build features
@@ -30,10 +30,10 @@ RUN git clone --depth=1 https://github.com/amazon-braket/amazon-braket-examples.
 RUN git clone --depth=1 https://github.com/vm6502q/amazon-braket-qrack-simulator-python.git
 
 # install qrack braket simulator + qiskit & cirq qrack-provider
-RUN cd /pyqrack && pip3 install .
-RUN cd /qiskit-qrack-provider && pip3 install .
-RUN cd /cirq-qrack && pip3 install .
-RUN cd /amazon-braket-qrack-simulator-python && pip3 install .
+RUN cd /pyqrack && pip3 install . && pip3 cache purge
+RUN cd /qiskit-qrack-provider && pip3 install . && pip3 cache purge
+RUN cd /cirq-qrack && pip3 install . && pip3 cache purge
+RUN cd /amazon-braket-qrack-simulator-python && pip3 install . && pip3 cache purge
 
 ENV SAGEMAKER_PROGRAM /amazon-braket-qrack-simulator-python/src/braket/qrack_simulator/qrack_simulator.py
 ENTRYPOINT python3 /amazon-braket-qrack-simulator-python/src/braket/qrack_simulator/qrack_simulator.py
