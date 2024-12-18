@@ -1,4 +1,4 @@
-FROM nvidia/cuda:11.4.3-devel-ubuntu20.04
+FROM twobombs/qrackmin:latest
 LABEL com.nvidia.volumes.needed="nvidia_driver"
 
 ENV PATH /usr/local/nvidia/bin:${PATH}
