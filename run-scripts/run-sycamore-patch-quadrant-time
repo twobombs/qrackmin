@@ -1,0 +1,16 @@
+#!/bin/bash
+# at a depth of up to 40 scaling will be ramping up to 105
+
+cd /pyqrack-examples/rcs
+
+for ((i=4; i<=105; i++)); do
+  for ((j=40; j<=40; j++)); do
+    echo "Running i=$i, j=$j"
+    python3 sycamore_2019_patch_quadrant_time.py "$i" "$j" 2>>errors_sycamore_2019_patch_quadrant_time.txt 1>>sycamore_2019_patch_quadrant_time_$(echo $i).txt
+    sleep 10
+  done
+ sleep 120
+done
+
+# end run, do not stop container
+tail -f /dev/null
