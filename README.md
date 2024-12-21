@@ -37,7 +37,7 @@ docker exec -ti [containerID] bash
 
 - ### `Qrackmin:pyqrack` - a python runtime environment to run tests for pyqrack
 - ### `Qrackmin:qbdd` - a python runtime environment to run benchmarks for qbdd
-- ### `Qrackmin:elidded` - a python runtime environment to run benchmarks for sycamore
+- ### `Qrackmin:elidded` - a python runtime environment to run sycamore/willow rcs
 
 ---------------
 
