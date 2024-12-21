@@ -1,4 +1,4 @@
 FROM twobombs/qrackmin:qbdd
 
 # entrypoint to benchmark elidded run
-ENTRYPOINT /root/run-sycamore-patch-quadrant
+ENTRYPOINT /root/run-sycamore-patch-quadrant-time
