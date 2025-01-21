@@ -40,7 +40,7 @@ docker exec -ti [containerID] bash
 
 ---------------
 
-- ### `Qrackmin:elidded` - Elidded and patched RCS tests
+- ### `Qrackmin:elidded` - Elidded and patched quadrant time tests
 
 ![1734875657236](https://github.com/user-attachments/assets/b69d2334-7da8-4985-9c26-a2b745af91c5)
 
