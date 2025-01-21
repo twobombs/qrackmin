@@ -37,7 +37,16 @@ docker exec -ti [containerID] bash
 
 - ### `Qrackmin:pyqrack` - a python runtime environment to run tests for pyqrack
 - ### `Qrackmin:qbdd` - a python runtime environment to run benchmarks for qbdd
-- ### `Qrackmin:elidded` - a python runtime environment to run sycamore/willow rcs
+
+---------------
+
+- ### `Qrackmin:elidded` - Elidded and patched RCS tests
+
+![1734875657236](https://github.com/user-attachments/assets/b69d2334-7da8-4985-9c26-a2b745af91c5)
+
+```bash
+docker run --gpus all --device=/dev/dri:/dev/dri -d twobombs/qrackmin:elidded
+````
 
 ---------------
 
@@ -49,14 +58,6 @@ docker exec -ti [containerID] bash
 - For validation before GPU cluster deployment
 
 ---------------
-
-- ### `Qrackmin:elidded` - Elidded and patched RCS tests
-
-![1734875657236](https://github.com/user-attachments/assets/b69d2334-7da8-4985-9c26-a2b745af91c5)
-
-```bash
-docker run --gpus all --device=/dev/dri:/dev/dri -d twobombs/qrackmin:elidded
-````
 
 - ### Qrackmin`:VCL` - Qrack@VCL with node support
 
