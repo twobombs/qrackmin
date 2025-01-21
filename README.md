@@ -50,6 +50,14 @@ docker exec -ti [containerID] bash
 
 ---------------
 
+- ### `Qrackmin:elidded` - Elidded and patched RCS tests
+
+![1734875657236](https://github.com/user-attachments/assets/b69d2334-7da8-4985-9c26-a2b745af91c5)
+
+```bash
+docker run --gpus all --device=/dev/dri:/dev/dri -d twobombs/qrackmin:elidded
+````
+
 - ### Qrackmin`:VCL` - Qrack@VCL with node support
 
 The [`:vcl`](https://github.com/twobombs/qrackmin/blob/main/dockerfiles/Dockerfile-vcl) tag contains [`VCL`](https://mosix.cs.huji.ac.il/txt_vcl.html) binaries that are copyrighted by Amnon Barak to run VCL as a backend and host
