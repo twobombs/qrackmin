@@ -44,7 +44,7 @@ RUN cp -r /qrack /qrack64cuda
 RUN cp -r /qrack /qrack16cuda
 
 # install qrack install features
-RUN apt-get update && apt-get -y install build-essential cmake openssh-server wget vim-common opencl-headers curl libfreetype6-dev autotools-dev libicu-dev libbz2-dev libboost-all-dev && apt-get clean all
+RUN apt-get update && apt-get -y install build-essential cmake openssh-server wget vim-common opencl-headers curl libfreetype6-dev autotools-dev libicu-dev libbz2-dev libboost-all-dev libeigen3-dev && apt-get clean all
 
 # CUDA Qrack install & dependancies 
 RUN cd /var/log && mkdir qrack
