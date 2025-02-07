@@ -54,7 +54,7 @@ RUN cd /qrack16cuda/include && mkdir CL && cd /qrack16cuda && mkdir _build && cd
 # BigQrack install & dependancies
 RUN cd /qrack128cuda/include && mkdir CL && cd /qrack128cuda && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=6 -DUINTPOW=6 -DQBCAPPOW=12 -DENABLE_RDRAND=OFF -DENABLE_COMPLEX_X2=ON -DENABLE_CUDA=ON -DENABLE_OPENCL=OFF -DQRACK_CUDA_ARCHITECTURES=50 .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all
 # CUDA32 default
-RUN cd /qrackcuda/include && mkdir CL && mkdir _build && cd _build && cmake -DQRACK_DISABLE_QUNIT_FIDELITY_GUARD=ON -DENABLE_DEVRAND=ON -DFPPOW=5 -DUINTPOW=6 -DQBCAPPOW=6 -DENABLE_COMPLEX_X2=ON -DENABLE_CUDA=ON -DENABLE_OPENCL=OFF -DQRACK_CUDA_ARCHITECTURES=50 .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all && make install
+RUN cd /qrackcuda/include && mkdir CL && cd /qrackcuda && mkdir _build && cd _build && cmake -DQRACK_DISABLE_QUNIT_FIDELITY_GUARD=ON -DENABLE_DEVRAND=ON -DFPPOW=5 -DUINTPOW=6 -DQBCAPPOW=6 -DENABLE_COMPLEX_X2=ON -DENABLE_CUDA=ON -DENABLE_OPENCL=OFF -DQRACK_CUDA_ARCHITECTURES=50 .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all && make install
 #
 
 ENV SAGEMAKER_PROGRAM /amazon-braket-qrack-simulator-python/src/braket/qrack_simulator/qrack_simulator.py
