@@ -10,6 +10,9 @@ RUN pip3 install --upgrade pip && pip3 cache purge
 RUN pip3 install amazon-braket-sdk qiskit packaging && pip3 cache purge
 # pyqrack-cuda installed by source
 
+# NVidia hw integration
+RUN mkdir -p /etc/OpenCL/vendors && echo "libnvidia-opencl.so.1" > /etc/OpenCL/vendors/nvidia.icd
+
 # install build features
 RUN apt-get update && apt-get -y install git build-essential cmake openssh-server wget vim-common python3-setuptools opencl-headers curl libfreetype6-dev autotools-dev libicu-dev libbz2-dev libboost-all-dev && apt-get clean all
 
