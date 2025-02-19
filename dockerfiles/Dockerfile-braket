@@ -31,12 +31,15 @@ RUN git clone --depth=1 https://github.com/vm6502q/amazon-braket-qrack-simulator
 
 # install qrack braket simulator + qiskit & cirq qrack-provider
 RUN cd /pyqrack && pip3 install . && pip3 cache purge
-RUN cd /qiskit-qrack-provider && pip3 install . && pip3 cache purge
-RUN cd /cirq-qrack && pip3 install . && pip3 cache purge
 RUN cd /amazon-braket-qrack-simulator-python && pip3 install . && pip3 cache purge
 
 # install qrack with diverse option precompiled - default is 32bit cuda ( placed at the end ) 
 # other flavours can be installed onthefly by executing a make install in their precompiled directories
+
+RUN cp -r /qrack /qrack128
+RUN cp -r /qrack /qrack64
+RUN cp -r /qrack /qrack16
+RUN cp -r /qrack /qrack8
 
 RUN cp -r /qrack /qrackcuda
 RUN cp -r /qrack /qrack128cuda
@@ -55,7 +58,17 @@ RUN cd /qrack16cuda/include && mkdir CL && cd /qrack16cuda && mkdir _build && cd
 RUN cd /qrack128cuda/include && mkdir CL && cd /qrack128cuda && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=6 -DUINTPOW=6 -DQBCAPPOW=12 -DENABLE_RDRAND=OFF -DENABLE_COMPLEX_X2=ON -DENABLE_CUDA=ON -DENABLE_OPENCL=OFF -DQRACK_CUDA_ARCHITECTURES=50 .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all
 # CUDA32 default
 RUN cd /qrackcuda/include && mkdir CL && cd /qrackcuda && mkdir _build && cd _build && cmake -DQRACK_DISABLE_QUNIT_FIDELITY_GUARD=ON -DENABLE_DEVRAND=ON -DFPPOW=5 -DUINTPOW=6 -DQBCAPPOW=6 -DENABLE_COMPLEX_X2=ON -DENABLE_CUDA=ON -DENABLE_OPENCL=OFF -DQRACK_CUDA_ARCHITECTURES=50 .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all && make install
-#
+
+# Qrack OCL install & dependancies 
+RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=5 -DUINTPOW=6 -DQBCAPPOW=6 -DENABLE_COMPLEX_X2=ON .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all 
+# 64Qrack install & dependancies
+RUN cd /qrack64/include && mkdir CL && cd /qrack64 && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=6 -DUINTPOW=6 -DQBCAPPOW=7 -DENABLE_COMPLEX_X2=ON .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all 
+# SmallQrack install & dependancies
+RUN cd /qrack16/include && mkdir CL && cd /qrack16 && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=4 -DUINTPOW=5 -DQBCAPPOW=5 -DENABLE_COMPLEX_X2=OFF .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all
+# BigQrack install & dependancies
+RUN cd /qrack128/include && mkdir CL && cd /qrack128 && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=6 -DUINTPOW=6 -DQBCAPPOW=12 -DENABLE_RDRAND=OFF -DENABLE_COMPLEX_X2=ON .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all 
+
+
 
 ENV SAGEMAKER_PROGRAM /amazon-braket-qrack-simulator-python/src/braket/qrack_simulator/qrack_simulator.py
 ENTRYPOINT python3 /amazon-braket-qrack-simulator-python/src/braket/qrack_simulator/qrack_simulator.py
