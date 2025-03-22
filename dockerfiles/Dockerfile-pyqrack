@@ -34,6 +34,9 @@ RUN apt-get install -y librdmacm-dev libpsm2-dev
 # install pennylane and openfermion dependancies for pyqrack vqe 
 RUN pip install pennylane pennylane-qrack openfermion openfermionpyscf
 
+# Qrack install & dependancies 
+RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=5 -DUINTPOW=6 -DQBCAPPOW=6 -DENABLE_COMPLEX_X2=ON .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all  && make install
+
 COPY run-scripts/run* /root/
 RUN chmod 755 /root/run*
 
