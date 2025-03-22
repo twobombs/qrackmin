@@ -1,3 +1,5 @@
+# this is a minimal QRND device PoC based on CPU QFT output from qrack
+
 FROM ubuntu:latest
 
 # fetch dependancies
