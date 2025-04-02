@@ -20,9 +20,17 @@ RUN git clone --recursive --depth=1 --recursive https://github.com/PennyLaneAI/p
 # NVidia hw integration
 RUN mkdir -p /etc/OpenCL/vendors && echo "libnvidia-opencl.so.1" > /etc/OpenCL/vendors/nvidia.icd
 
-# Qrack install & dependancies without OpenCL for CPU only processing
+# Qrack CPU only install & dependancies without OpenCL for CPU only processing
 RUN cp -r /qrack /qrackcpu
 RUN cd /qrackcpu/include && mkdir CL && cd /qrackcpu && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=5 -DUINTPOW=6 -DQBCAPPOW=6 -DENABLE_COMPLEX_X2=ON -DENABLE_OPENCL=OFF .. && make -i -k -j 2 all && make install
+
+# copy for Qrack 16 bit for ising and qbdd models
+RUN cp -r /qrack /qrack16
+# 'SmallQrack' install & dependancies
+RUN cd /qrack16/include && mkdir CL && cd /qrack16 && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=4 -DUINTPOW=5 -DQBCAPPOW=5 -DENABLE_COMPLEX_X2=OFF .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all
+
+# Qrack32 install & dependancies [default]
+RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=5 -DUINTPOW=6 -DQBCAPPOW=6 -DENABLE_COMPLEX_X2=ON .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all  && make install
 
 # install PyQrack
 RUN cd /pyqrack &&  pip3 install .  && pip3 cache purge
@@ -40,11 +48,8 @@ RUN apt install -y libopenblas-dev && apt clean all
 RUN pip install --prefer-binary --upgrade pyscf && pip cache purge
 RUN pip install --prefer-binary --upgrade pennylane pennylane-qrack openfermion openfermionpyscf pennylane-qchem pennylane-cirq cirq matplotlib autograd && pip cache purge
 
-# isntall qiskit for pyqrack-examples ising model interaction
+# install qiskit for pyqrack-examples ising model interaction
 RUN pip install qiskit && pip cache purge
-
-# Qrack install & dependancies 
-RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=5 -DUINTPOW=6 -DQBCAPPOW=6 -DENABLE_COMPLEX_X2=ON .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all  && make install
 
 COPY run-scripts/run* /root/
 RUN chmod 755 /root/run*
