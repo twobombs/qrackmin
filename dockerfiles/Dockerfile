@@ -13,10 +13,10 @@ RUN add-apt-repository -y ppa:wrathfulspatula/vm6502q && apt clean
 RUN apt install -y libqrack-dev libeigen3-dev
 
 # install glvnd ( temp key fix )
-RUN apt-get clean && \
-    apt-key adv --fetch-keys "https://developer.download.nvidia.com/compute/cuda/repos/$(cat /etc/os-release | grep '^ID=' | awk -F'=' '{print $2}')$(cat /etc/os-release | grep '^VERSION_ID=' | awk -F'=' '{print $2}' | sed 's/[^0-9]*//g')/x86_64/3bf863cc.pub" && \
-    rm -rf /var/lib/apt/lists/*
-RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && apt install -y software-properties-common net-tools openvpn netcat clinfo git mc opencl-headers ocl-icd-opencl-dev  && add-apt-repository multiverse && apt update && export DEBIAN_FRONTEND=noninteractive && apt-get install -y --no-install-recommends pkg-config libglvnd-dev pciutils && apt-get -f -y install && dpkg --configure -a && apt-get clean all && apt -y autoremove
+#RUN apt-get clean && \
+#    apt-key adv --fetch-keys "https://developer.download.nvidia.com/compute/cuda/repos/$(cat /etc/os-release | grep '^ID=' | awk -F'=' '{print $2}')$(cat /etc/os-release | grep '^VERSION_ID=' | awk -F'=' '{print $2}' | sed 's/[^0-9]*//g')/x86_64/3bf863cc.pub" && \
+#    rm -rf /var/lib/apt/lists/*
+#RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && apt install -y software-properties-common net-tools openvpn netcat clinfo git mc opencl-headers ocl-icd-opencl-dev  && add-apt-repository multiverse && apt update && export DEBIAN_FRONTEND=noninteractive && apt-get install -y --no-install-recommends pkg-config libglvnd-dev pciutils && apt-get -f -y install && dpkg --configure -a && apt-get clean all && apt -y autoremove
 
 # NVidia hw integration
 RUN mkdir -p /etc/OpenCL/vendors && echo "libnvidia-opencl.so.1" > /etc/OpenCL/vendors/nvidia.icd
@@ -72,7 +72,7 @@ RUN cd /qrack128/include && mkdir CL && cd /qrack128 && mkdir _build && cd _buil
 RUN cd /qrack32vcl/include && mkdir CL && cd /qrack32vcl && mkdir _build && cd _build && cmake -DENALBE_OOO_OCL=OFF -DENABLE_DEVRAND=ON -DFPPOW=5 -DUINTPOW=6 -DQBCAPPOW=6 -DENABLE_COMPLEX_X2=ON .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all 
 
 # qrack cuda ENABLE_GVIRTUS
-RUN cd /qrackcudagvirtus/include && mkdir CL && cd /qrackcudagvirtus/ && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DENABLE_OPENCL=OFF -DENABLE_CUDA=ON -DENABLE_GVIRTUS=ON -DQRACK_CUDA_ARCHITECTURES=50 .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all
+#RUN cd /qrackcudagvirtus/include && mkdir CL && cd /qrackcudagvirtus/ && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DENABLE_OPENCL=OFF -DENABLE_CUDA=ON -DENABLE_GVIRTUS=ON -DQRACK_CUDA_ARCHITECTURES=50 .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all
 
 # fetch thereminq & run/build scripts
 RUN git clone --depth=1 https://github.com/twobombs/thereminq.git && cd /thereminq/runscripts/ && chmod 744 * && cp run-* /root/
