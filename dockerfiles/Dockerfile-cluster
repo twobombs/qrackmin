@@ -15,7 +15,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 #RUN export LD_LIBRARY_PATH=${GVIRTUS_HOME}/lib:${GVIRTUS_HOME}/lib/frontend:${LD_LIBRARY_PATH}
 
 # fetch thereminq & run/build scripts
-RUN git clone --depth=1 https://github.com/twobombs/thereminq.git && cd /thereminq/runscripts/ && chmod 744 * && cp run-* /root/
+#RUN git clone --depth=1 https://github.com/twobombs/thereminq.git && cd /thereminq/runscripts/ && chmod 744 * && cp run-* /root/
 
 # debug tools
 #RUN apt install -y --no-install-recommends gnupg
