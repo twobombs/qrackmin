@@ -76,7 +76,7 @@ RUN cd /qrack32vcl/include && mkdir CL && cd /qrack32vcl && mkdir _build && cd _
 
 # fetch thereminq & run/build scripts
 RUN git clone --depth=1 https://github.com/twobombs/thereminq.git && cd /thereminq/runscripts/ && chmod 744 * && cp run-* /root/
-RUN git clone --depth=1 https://github.com/twobombs/thereminq-tensors.git && cd /thereminq-tensors/runscripts/ && chmod 744 * && cp run-* /root/
+RUN git clone --depth=1 https://github.com/twobombs/thereminq-tensors.git && cd /thereminq-tensors/runfiles/ && chmod 744 * && cp run-* /root/
 
 COPY run-scripts/run* /root/
 RUN chmod 755 /root/run*
