@@ -45,7 +45,8 @@ RUN apt-get install -y librdmacm-dev libpsm2-dev
 
 # install pennylane, openfermion and other dependancies for pyqrack vqe benchmark scripts
 RUN apt install -y libopenblas-dev && apt clean all
-RUN pip install --prefer-binary --upgrade pennylane pennylane-qrack openfermion pyscf openfermionpyscf pennylane-qchem pennylane-cirq cirq matplotlib autograd && pip cache purge
+RUN pip install --prefer-binary --upgrade pennylane pennylane-qrack openfermion openfermionpyscf pennylane-qchem pennylane-cirq cirq matplotlib autograd && pip cache purge
+# pyscf
 
 # install qiskit for pyqrack-examples ising model interaction
 RUN pip install qiskit && pip cache purge
