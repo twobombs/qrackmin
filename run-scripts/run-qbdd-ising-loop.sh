@@ -13,7 +13,7 @@ for ((i=4; i<=56; i++)); do
   for ((j=4; j<=i; j++)); do
     echo "Running i=$i, j=$j"
     # Execute python script in the background
-    python3 ising_qbdd_fixes.py "$j" "$i" 2>>errors_ising_qbdd_fixes.txt 1>>ising_qbdd_fixes_$(echo $j)_$(echo $i).txt &
+    python3 ising_qbdd_fixes.py "$j" "$i" 2>>errors_ising_qbdd_fixes.txt 1>>ising_qbdd_fixes_$(echo $i)_$(echo $j).txt &
     # Store the PID of the last backgrounded process
     pids+=($!)
 
