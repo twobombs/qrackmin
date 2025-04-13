@@ -18,8 +18,7 @@ for ((i=4; i<=56; i++)); do
     pids+=($!)
 
   done
-
-  # Instead of sleeping for a fixed time, wait for all PIDs in the 'pids' array
+  
   echo "--- Waiting for all python scripts launched for i=$i to complete... ---"
   # The 'wait' command waits for the specified PIDs to finish.
   # Using "${pids[@]}" ensures all PIDs in the array are passed correctly.
