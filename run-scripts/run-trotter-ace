@@ -2,7 +2,7 @@
 #!/bin/bash
 
 cd /pyqrack-examples/ising/
-QRACK_MAX_PAGING_QB=27 && QRACK_QTENSORNETWORK_THRESHOLD_QB=1 && QRACK_OCL_DEFAULT_DEVICE=0 && python3 ising_ace.py 10
+export QRACK_MAX_PAGING_QB=27 && export QRACK_QTENSORNETWORK_THRESHOLD_QB=1 && export QRACK_OCL_DEFAULT_DEVICE=0 && python3 ising_ace.py 10
 
 # end run, do not stop container
 # tail -f /dev/null
