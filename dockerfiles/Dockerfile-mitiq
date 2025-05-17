@@ -1,0 +1,48 @@
+FROM nvidia/cuda:12.4.1-devel-ubuntu22.04
+LABEL com.nvidia.volumes.needed="nvidia_driver"
+ENV PATH /usr/local/nvidia/bin:${PATH}
+ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64:${LD_LIBRARY_PATH}
+
+# upgrade image because of nv not upgrading
+RUN apt update && export DEBIAN_FRONTEND=noninteractive && apt -y upgrade && apt clean all
+
+# install features
+RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && apt-get -y install git mc screen python3-full python3-pip python3-pybind11 build-essential cmake openssh-server wget vim-common python3-setuptools opencl-headers curl libfreetype6-dev autotools-dev libicu-dev libbz2-dev libboost-all-dev && apt-get clean all
+
+# clone repos
+RUN git clone --recursive --depth=1 https://github.com/unitaryfund/qrack.git
+RUN git clone --recursive --depth=1 https://github.com/unitaryfund/pyqrack.git
+
+# integrate own repo
+RUN git clone --recursive  --depth=1 https://github.com/twobombs/thereminq-tensors
+RUN git clone --recursive  --depth=1 https://github.com/twobombs/thereminq-examples
+
+# pyqrack examples integration
+RUN git clone --recursive  --depth=1 https://github.com/vm6502q/pyqrack-examples.git
+# and copy for prep to other flavours
+RUN cp -r /qrack /qrack128
+RUN cp -r /qrack /qrack64
+RUN cp -r /qrack /qrack16
+RUN cp -r /qrack /qrack8
+
+# Qrack alternative precompiles ( needs make install scripted to be activated in pyqrack)
+# 64Qrack install & dependancies ( with -DFPPOW=5 set to 5 instead of 7 )
+RUN cd /qrack64/include && mkdir CL && cd /qrack64 && mkdir _build && cd _build && cmake -DQRACK_DISABLE_QUNIT_FIDELITY_GUARD=ON -DENABLE_DEVRAND=ON -DENABLE_PTHREAD=OFF -DENABLE_RDRAND=OFF -DUINTPOW=6 -DFPPOW=5 -DQBCAPPOW=7 -DPSTRIDEPOW=12 -DENABLE_OPENCL=OFF .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all
+# SmallQrack install & dependancies
+RUN cd /qrack16/include && mkdir CL && cd /qrack16 && mkdir _build && cd _build && cmake -DQRACK_DISABLE_QUNIT_FIDELITY_GUARD=ON -DENABLE_PTHREAD=OFF -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DUINTPOW=5 -DFPPOW=5 -DQBCAPPOW=5 -DPSTRIDEPOW=12 -DENABLE_OPENCL=OFF .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all
+# BigQrack install & dependancies ( lower  -DQBCAPPOW=7 for 64+ qubits )
+RUN cd /qrack128/include && mkdir CL && cd /qrack128 && mkdir _build && cd _build && cmake -DQRACK_DISABLE_QUNIT_FIDELITY_GUARD=ON -DENABLE_PTHREAD=OFF -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DUINTPOW=6 -DFPPOW=6 -DQBCAPPOW=7 -DPSTRIDEPOW=12 -DENABLE_OPENCL=OFF .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all
+
+# Qrack QBDD default install & dependancies with OpenCL for CPU only processing and fp16 QBDD optimisations use -DQBCAPPOW=7 for 64+ qubits
+RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && cmake -DQRACK_DISABLE_QUNIT_FIDELITY_GUARD=ON -DENABLE_PTHREAD=OFF -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DUINTPOW=6 -DFPPOW=5 -DQBCAPPOW=7 -DPSTRIDEPOW=12 -DENABLE_OPENCL=OFF .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all && make install
+
+# install PyQrack
+RUN cd /pyqrack &&  pip3 install .  && pip3 cache purge
+
+# install mitiq
+RUN pip install mitiq cirq && pip3 cache purge
+
+# fix entrypoint to benchmark qbdd run
+COPY run-scripts/run-* /root/
+RUN chmod 755 /root/run-*
+ENTRYPOINT /root/run
