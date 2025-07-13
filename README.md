@@ -11,7 +11,7 @@ Qrackmin container system deployed in rancher through the ThereminQ [HELM](https
 - The [`:latest`](https://github.com/twobombs/qrackmin/blob/main/dockerfiles/Dockerfile) container image is meant to be used on a single node with Nvidia-Docker2 and Linux support
 
 ```bash
-docker run --gpus all --device=/dev/dri:/dev/dri --privileged -d twobombs/qrackmin[:tag] [--memory 24G --memory-swap 250G]
+docker run --gpus all --device=/dev/kfd --device=/dev/dri:/dev/dri --privileged -d twobombs/qrackmin[:tag] [--memory 24G --memory-swap 250G]
 ````
 
 - `-v /var/log/qrack:/var/log/qrack` for saving of measured results outside container
