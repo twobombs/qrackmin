@@ -1,4 +1,6 @@
-# Qrackmin - a minimalistic container for Qrack - OpenCL & CUDA
+<img width="5978" height="1578" alt="468390747-272a9fdc-d924-4771-850c-d100f23562f6 (1)" src="https://github.com/user-attachments/assets/2e441861-74cd-4a14-85de-1e1cca079cfc" />
+
+# Qrackmin - a minimalistic container solution for Qrack
 
 ![Screenshot from 2024-10-05 15-58-16](https://github.com/user-attachments/assets/d84647ea-3158-4e48-98d0-60d884f82283)
 *Qrackmin container system deployed in rancher through the ThereminQ [HELM](https://github.com/twobombs/thereminq-helm) definitions*
