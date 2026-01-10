@@ -81,7 +81,7 @@ RUN cd /qrack32vcl/include && mkdir CL && cd /qrack32vcl && mkdir _build && cd _
 #RUN cd /qrackcudagvirtus/include && mkdir CL && cd /qrackcudagvirtus/ && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DENABLE_OPENCL=OFF -DENABLE_CUDA=ON -DENABLE_GVIRTUS=ON -DQRACK_CUDA_ARCHITECTURES=50 .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all
 
 # fetch thereminq & run/build scripts
-RUN git clone --depth=1 https://github.com/twobombs/thereminq.git && cd /thereminq/runscripts/ && chmod 744 * && cp run-* /root/
+RUN git clone --depth=1 https://github.com/twobombs/thereminq-classiq.git && cd /thereminq-classiq/runscripts/ && chmod 744 * && cp run-* /root/
 RUN git clone --depth=1 https://github.com/twobombs/thereminq-tensors.git && cd /thereminq-tensors/runfiles/ && chmod 744 * && cp run-* /root/
 
 COPY run-scripts/run* /root/
