@@ -1,8 +1,9 @@
 FROM twobombs/qrackmin:latest
 
 # install pocl build requirements
-RUN apt update && add-apt-repository -y ppa:ocl-icd/ppa && apt install -y clang llvm clinfo ocl-icd-opencl-dev pocl-opencl-icd libopencl-clang-dev libclang-dev libclang-cpp-dev pkg-config libhwloc-dev python3-dev ocl-icd-libopencl1 ocl-icd-opencl-dev llvm-spirv-15 cmake && apt clean all
+RUN apt update && add-apt-repository -y ppa:ocl-icd/ppa && apt install -y clang llvm clinfo ocl-icd-opencl-dev pocl-opencl-icd libclang-dev libclang-cpp-dev pkg-config libhwloc-dev python3-dev ocl-icd-libopencl1 ocl-icd-opencl-dev llvm-spirv-18 cmake && apt clean all
 RUN apt install -y python3-dev libpython3-dev build-essential ocl-icd-libopencl1 cmake git pkg-config libclang-dev clang llvm make ninja-build ocl-icd-libopencl1 ocl-icd-dev ocl-icd-opencl-dev libhwloc-dev zlib1g zlib1g-dev clinfo dialog apt-utils libxml2-dev libclang-cpp-dev llvm-dev && apt clean all
+RUN apt install -y llvm-18 llvm-18-dev clang-18 libclang-18-dev libclang-cpp18-dev && apt-get clean all
 
 # clone repos
 RUN git clone --depth=1 https://github.com/pocl/pocl.git && cp -r /pocl /pocl-remote
