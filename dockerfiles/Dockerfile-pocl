@@ -1,6 +1,6 @@
 FROM twobombs/qrackmin:latest
 
-# install pocl 3 and pocl 4 and pre-5 build requirements
+# install pocl build requirements
 RUN apt update && add-apt-repository -y ppa:ocl-icd/ppa && apt install -y clang llvm clinfo ocl-icd-opencl-dev pocl-opencl-icd libopencl-clang-dev libclang-dev libclang-cpp-dev pkg-config libhwloc-dev python3-dev ocl-icd-libopencl1 ocl-icd-opencl-dev llvm-spirv-15 cmake && apt clean all
 RUN apt install -y python3-dev libpython3-dev build-essential ocl-icd-libopencl1 cmake git pkg-config libclang-dev clang llvm make ninja-build ocl-icd-libopencl1 ocl-icd-dev ocl-icd-opencl-dev libhwloc-dev zlib1g zlib1g-dev clinfo dialog apt-utils libxml2-dev libclang-cpp-dev llvm-dev && apt clean all
 
@@ -8,7 +8,7 @@ RUN apt install -y python3-dev libpython3-dev build-essential ocl-icd-libopencl1
 RUN git clone --depth=1 https://github.com/pocl/pocl.git && cp -r /pocl /pocl-remote
 
 # build and install regular pocl
-RUN cd pocl && mkdir build && cd build && cmake -G Ninja -DWITH_LLVM_CONFIG=/usr/bin/llvm-config-14 -DCMAKE_INSTALL_PREFIX=/usr .. && ninja install
+RUN cd pocl && mkdir build && cd build && cmake -DWITH_LLVM_CONFIG=/usr/bin/llvm-config-18 -DCMAKE_INSTALL_PREFIX=/usr .. && make -j$(nproc) && make install
 
 # build pocl-remote
 RUN cd pocl-remote && mkdir build && cd build && cmake -DENABLE_HOST_CPU_DEVICES=0 -DENABLE_LLVM=0 -DENABLE_ICD=1 -DENABLE_REMOTE_CLIENT=1 -DENABLE_REMOTE_SERVER=1 .. && make -j$(nproc) && make install
