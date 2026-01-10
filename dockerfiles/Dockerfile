@@ -1,4 +1,4 @@
-FROM nvidia/cuda:12.8.0-devel-ubuntu22.04
+FROM nvidia/cuda:12.8.0-devel-ubuntu24.04
 LABEL com.nvidia.volumes.needed="nvidia_driver"
 
 ENV PATH /usr/local/nvidia/bin:${PATH}
