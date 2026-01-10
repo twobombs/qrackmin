@@ -28,7 +28,9 @@ RUN mkdir -p /etc/OpenCL/vendors && echo "libnvidia-opencl.so.1" > /etc/OpenCL/v
 #RUN export LD_LIBRARY_PATH=${GVIRTUS_HOME}/lib:${GVIRTUS_HOME}/lib/frontend:${LD_LIBRARY_PATH}
 # $GVIRTUS_HOME/bin/gvirtus-backend ${GVIRTUS_HOME}/etc/properties.json
 
-# clone repo
+# clone repos
+
+RUN git clone https://github.com/twobombs/thereminq-examples.git
 RUN git clone --depth=1 --recursive https://github.com/unitaryfund/qrack.git
 
 RUN cp -r /qrack /qrack128
