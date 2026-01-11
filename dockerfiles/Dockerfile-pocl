@@ -9,7 +9,7 @@ RUN apt install -y llvm-18 llvm-18-dev clang-18 libclang-18-dev libclang-cpp18-d
 RUN git clone --depth=1 https://github.com/pocl/pocl.git && cp -r /pocl /pocl-remote
 
 # build and install regular pocl
-RUN cd pocl && mkdir build && cd build && cmake -DWITH_LLVM_CONFIG=/usr/bin/llvm-config-18 -DCMAKE_INSTALL_PREFIX=/usr .. && make -j$(nproc) && make install
+RUN cd pocl && mkdir build && cd build && cmake -DWITH_LLVM_CONFIG=/usr/bin/llvm-config-18 -DCMAKE_INSTALL_PREFIX=/usr .. && make -j$(nproc)
 
 # build pocl-remote
 RUN cd pocl-remote && mkdir build && cd build && cmake -DENABLE_HOST_CPU_DEVICES=0 -DENABLE_LLVM=0 -DENABLE_ICD=1 -DENABLE_REMOTE_CLIENT=1 -DENABLE_REMOTE_SERVER=1 .. && make -j$(nproc) && make install
