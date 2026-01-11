@@ -16,5 +16,5 @@ RUN cd pocl-remote && mkdir build && cd build && cmake -DENABLE_HOST_CPU_DEVICES
 
 RUN clinfo
 
-EXPOSE 255
+EXPOSE 255 1234
 ENTRYPOINT /root/run
