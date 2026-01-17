@@ -1,10 +1,10 @@
 <img width="1016" height="443" alt="Screenshot from 2026-01-01 15-36-30" src="https://github.com/user-attachments/assets/b5c8d613-5dac-484a-baef-0032dfd8e484" />
 
 
-# Qrackmin - an HPC container solution for Qrack
+# Thereminq - HPC container solutions
 
 ![Screenshot from 2024-10-05 15-58-16](https://github.com/user-attachments/assets/d84647ea-3158-4e48-98d0-60d884f82283)
-*Qrackmin container system deployed in rancher through the ThereminQ [HELM](https://github.com/twobombs/thereminq-helm) definitions*
+*Thereminq-HPC container system deployed in rancher through the ThereminQ [HELM](https://github.com/twobombs/thereminq-helm) definitions*
 
 ## Table of Contents
 
@@ -24,7 +24,7 @@
 
 ## Overview
 
-Qrackmin is a minimalistic container system for [Qrack](https://github.com/unitaryfund/qrack), designed for both OpenCL and CUDA environments. It provides a set of Docker images and scripts to run quantum computing simulations and benchmarks. ThereminQ orchestrates a suite of best-of-class tools designed to control extend and visualize data emanating for Quantum circuits using Qrack ELK Tipsy Jupyter CUDA and OpenCL accelerators.
+Thereminq-HPC is a minimalistic container system for [Qrack](https://github.com/unitaryfund/qrack), designed for both OpenCL and CUDA environments. It provides a set of Docker images and scripts to run quantum computing simulations and benchmarks. ThereminQ orchestrates a suite of best-of-class tools designed to control extend and visualize data emanating for Quantum circuits using Qrack ELK Tipsy Jupyter CUDA and OpenCL accelerators.
 
 ## Directory Structure
 
@@ -47,19 +47,19 @@ The `dockerfiles/` directory contains a variety of Dockerfiles to build containe
 | `Dockerfile-2204`                 | Dockerfile for Ubuntu 22.04.                                                                        |
 | `Dockerfile-2204amd`              | Dockerfile for Ubuntu 22.04 with AMD support.                                                       |
 | `Dockerfile-arm`                  | Dockerfile for ARM architecture.                                                                    |
-| `Dockerfile-aws`                  | For `Qrackmin:AWS`, providing a binary runtime for Qrack as a Service on AWS.                       |
-| `Dockerfile-braket`               | For `Qrackmin:BRAKET`, providing a Python runtime for PyQrack as a `|BraKET>` container service.     |
+| `Dockerfile-aws`                  | For `Thereminq-HPC:AWS`, providing a binary runtime for Qrack as a Service on AWS.                       |
+| `Dockerfile-braket`               | For `Thereminq-HPC:BRAKET`, providing a Python runtime for PyQrack as a `|BraKET>` container service.     |
 | `Dockerfile-cluster`              | Dockerfile for cluster support.                                                                     |
 | `Dockerfile-cluster-pocl`         | Dockerfile for cluster support with POCL.                                                           |
 | `Dockerfile-cuda`                 | Dockerfile with CUDA support.                                                                       |
 | `Dockerfile-mitiq`                | Dockerfile for Mitiq.                                                                               |
-| `Dockerfile-pocl`                 | For `Qrackmin:POCL`, adding the generic OpenCL-ICD for CPU-only support.                            |
+| `Dockerfile-pocl`                 | For `Thereminq-HPC:POCL`, adding the generic OpenCL-ICD for CPU-only support.                            |
 | `Dockerfile-pyqrack`              | A Python runtime environment for running `pyqrack` tests.                                           |
 | `Dockerfile-qbdd`                 | A Python runtime environment for running `qbdd` benchmarks.                                         |
 | `Dockerfile-qbdd-sycamore-sleep`  | Dockerfile for qbdd sycamore sleep.                                                                 |
 | `Dockerfile-qimcifa`              | Dockerfile for Qimcifa.                                                                             |
-| `Dockerfile-sycamore-elidded`     | For `Qrackmin:elidded`, for elidded and patched quadrant time tests.                                |
-| `Dockerfile-vcl`                  | For `Qrackmin:VCL`, containing VCL binaries for VCL cluster support.                                |
+| `Dockerfile-sycamore-elidded`     | For `Thereminq-HPC:elidded`, for elidded and patched quadrant time tests.                                |
+| `Dockerfile-vcl`                  | For `Thereminq-HPC:VCL`, containing VCL binaries for VCL cluster support.                                |
 | `Dockerfile-vcl-controller`       | Dockerfile for VCL controller.                                                                      |
 | `Dockerfile-vcl-pocl`             | Dockerfile for VCL with POCL support.                                                               |
 | `Dockerfile-vcl-pocl-vpn`         | Dockerfile for VCL with POCL and VPN support.                                                       |
@@ -71,7 +71,7 @@ The `dockerfiles/` directory contains a variety of Dockerfiles to build containe
 The `:latest` container image is meant to be used on a single node with Nvidia-Docker2 and Linux support.
 
 ```bash
-docker run --gpus all --device=/dev/kfd --device=/dev/dri:/dev/dri --privileged -d twobombs/qrackmin[:tag] [--memory 24G --memory-swap 250G]
+docker run --gpus all --device=/dev/kfd --device=/dev/dri:/dev/dri --privileged -d twobombs/thereminq-hpc[:tag] [--memory 24G --memory-swap 250G]
 ```
 
 -   To save measured results outside the container, use the volume flag: `-v /var/log/qrack:/var/log/qrack`.
@@ -88,15 +88,15 @@ docker exec -ti [containerID] bash
 
 ### `AWS` & `BRAKET`
 
--   **`Qrackmin:AWS`** (`:AWS`): On-demand AWS template proposals for x86 and ARM - CUDA, OpenCL and CPU powered. Boilerplate binary runtime code for Qrack as a Service - QFT RND benchmarks output. [Dockerfile-aws](https://github.com/twobombs/qrackmin/blob/main/dockerfiles/Dockerfile-aws)
--   **`Qrackmin:BRAKET`** (`:BRAKET`): Boilerplate python runtime code for `PyQrack` as a `|BraKET>` container service. [Dockerfile-braket](https://github.com/twobombs/qrackmin/blob/main/dockerfiles/Dockerfile-braket)
+-   **`Thereminq-HPC:AWS`** (`:AWS`): On-demand AWS template proposals for x86 and ARM - CUDA, OpenCL and CPU powered. Boilerplate binary runtime code for Qrack as a Service - QFT RND benchmarks output. [Dockerfile-aws](https://github.com/twobombs/qrackmin/blob/main/dockerfiles/Dockerfile-aws)
+-   **`Thereminq-HPC:BRAKET`** (`:BRAKET`): Boilerplate python runtime code for `PyQrack` as a `|BraKET>` container service. [Dockerfile-braket](https://github.com/twobombs/qrackmin/blob/main/dockerfiles/Dockerfile-braket)
 
 ---
 
 ### `pyqrack` & `qbdd`
 
--   **`Qrackmin:pyqrack`**: A python runtime environment to run tests for pyqrack.
--   **`Qrackmin:qbdd`**: A python runtime environment to run benchmarks for qbdd.
+-   **`Thereminq-HPC:pyqrack`**: A python runtime environment to run tests for pyqrack.
+-   **`Thereminq-HPC:qbdd`**: A python runtime environment to run benchmarks for qbdd.
 
 ---
 
@@ -107,7 +107,7 @@ Elidded and patched quadrant time tests.
 ![1734875657236](https://github.com/user-attachments/assets/b69d2334-7da8-4985-9c26-a2b745af91c5)
 
 ```bash
-docker run --gpus all --device=/dev/dri:/dev/dri -d twobombs/qrackmin:elidded
+docker run --gpus all --device=/dev/dri:/dev/dri -d twobombs/thereminq-hpc:elidded
 ```
 
 ---
@@ -159,7 +159,7 @@ Please refer to the individual scripts for more details on their usage.
 
 ## VCL Cluster Setup
 
-Qrackmin can be deployed as a VCL cluster for distributed computing.
+Thereminq-HPC can be deployed as a VCL cluster for distributed computing.
 
 #### On the host, the following directory structure needs to be created:
 
