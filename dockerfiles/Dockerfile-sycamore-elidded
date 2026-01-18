@@ -1,4 +1,4 @@
-FROM twobombs/qrackmin:qbdd
+FROM twobombs/thereminq-hpc:qbdd
 
 # entrypoint to benchmark elidded run
 ENTRYPOINT /root/run-sycamore-patch-quadrant-time
