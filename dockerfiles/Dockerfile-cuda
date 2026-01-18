@@ -1,4 +1,4 @@
-FROM twobombs/qrackmin:latest
+FROM twobombs/thereminq-hpc:latest
 
 # upgrade image because of nv not upgrading
 RUN apt update && apt -y upgrade && apt clean all
