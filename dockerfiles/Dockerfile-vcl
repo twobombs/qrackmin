@@ -1,4 +1,4 @@
-FROM twobombs/qrackmin
+FROM twobombs/thereminq-hpc
 
 # add VCL
 COPY deploy-scripts/VCL-1.25.tbz /VCL-1.25.tbz
