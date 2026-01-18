@@ -1,4 +1,4 @@
-FROM twobombs/qrackmin:qbdd
+FROM twobombs/thereminq-hpc:qbdd
 
 # fix entrypoint to benchmark qbdd run
 COPY run-scripts/run-qbdd* /root/
