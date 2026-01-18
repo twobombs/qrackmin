@@ -1,4 +1,4 @@
-FROM twobombs/qrackmin:cluster
+FROM twobombs/thereminq-hpc:cluster
 
 # install pocl build requirements
 RUN apt update && add-apt-repository -y ppa:ocl-icd/ppa && apt install -y clang llvm clinfo ocl-icd-opencl-dev pocl-opencl-icd libclang-dev libclang-cpp-dev pkg-config libhwloc-dev python3-dev ocl-icd-libopencl1 ocl-icd-opencl-dev llvm-spirv-18 cmake && apt clean all
