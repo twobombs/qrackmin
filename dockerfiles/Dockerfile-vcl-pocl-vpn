@@ -1,4 +1,4 @@
-FROM twobombs/qrackmin:vcl
+FROM twobombs/thereminq-hpc:vcl
 
 # install openvpn for LZ4 data compression  
 
