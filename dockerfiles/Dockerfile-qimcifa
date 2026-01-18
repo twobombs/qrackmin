@@ -1,4 +1,4 @@
-FROM twobombs/qrackmin
+FROM twobombs/thereminq-hpc
 
 RUN apt update && apt install -y pybind11-dev && apt clean all
 
