@@ -1,4 +1,4 @@
-FROM twobombs/qrackmin:vcl
+FROM twobombs/thereminq-hpc:vcl
 
 # fetch precompiled test apps 
 RUN git clone --depth=1 https://github.com/twobombs/cudacluster.git
