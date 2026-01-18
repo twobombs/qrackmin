@@ -1,4 +1,4 @@
-FROM twobombs/qrackmin:latest
+FROM twobombs/thereminq-hpc:latest
 LABEL com.nvidia.volumes.needed="nvidia_driver"
 
 ENV PATH /usr/local/nvidia/bin:${PATH}
